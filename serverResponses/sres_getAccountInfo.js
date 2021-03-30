@@ -9,7 +9,7 @@ return new Promise((resolve, reject) => {
 
 const { query } = require('mysql');
 
-pool.query(`SELECT * FROM \`klienci\` WHERE id = ${id}`, (error, results, fields) => {
+pool.query(`SELECT * FROM \`accounts\` WHERE AccountId = ${id}`, (error, results, fields) => {
     
     if(error)
     {
