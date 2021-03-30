@@ -2,19 +2,20 @@
 by SGGW WZIM Inf. 2019/gr.4
 
 # Spis treści
-- [Sposób działania](https://github.com/szellah/aidc-server/tree/master#sposób-działania)
-- [Nazewnictwo](https://github.com/szellah/aidc-server/tree/master#nazewnictwo)
-- [Potrzebne oprogramowanie](https://github.com/szellah/aidc-server/tree/master#potrzebne-oprogramowanie)
-- [Instalacja](https://github.com/szellah/aidc-server/tree/master#instalacja)
-  - [Node.js](https://github.com/szellah/aidc-server/tree/master#nodejs)
-  - [Express.js](https://github.com/szellah/aidc-server/tree/master#expressjs)
-  - [axios.js](https://github.com/szellah/aidc-server/tree/master#axiosjs)
-  - [mysql.js](https://github.com/szellah/aidc-server/tree/master#mysqljs)
-  - [XAMPP](https://github.com/szellah/aidc-server/tree/master#xampp)
-- [Konfiguracja](https://github.com/szellah/aidc-server/tree/master#konfiguracja)
-  - [Łącznie Server.js z serwerem MySql](https://github.com/szellah/aidc-server/tree/master#łącznie-serverjs-z-serwerem-mysql)
-- [Testowanie](https://github.com/szellah/aidc-server/tree/master#testowanie)
-- [Materiały Pomocnicze](https://github.com/szellah/aidc-server/tree/master#materiały-pomocnicze)
+- [Sposób działania](#sposób-działania)
+- [Nazewnictwo](#nazewnictwo)
+- [Potrzebne oprogramowanie](#potrzebne-oprogramowanie)
+- [Instalacja](#instalacja)
+  - [Node.js](#nodejs)
+  - [Express.js](#expressjs)
+  - [axios.js](#axiosjs)
+  - [mysql.js](#mysqljs)
+  - [XAMPP](#xampp)
+- [Konfiguracja](#konfiguracja)
+  - [Łącznie Server.js z serwerem MySql](#łącznie-serverjs-z-serwerem-mysql)
+- [Testowanie](#testowanie)
+- [Materiały Pomocnicze](#materiały-pomocnicze)
+
 
 
 
