@@ -1,3 +1,22 @@
+# AIDC-SERVER
+by SGGW WZIM Inf. 2019/gr.4
+
+# Spis treści
+- [Sposób działania](#sposób-działania)
+- [Nazewnictwo](#nazewnictwo)
+- [Potrzebne oprogramowanie](#potrzebne-oprogramowanie)
+- [Instalacja](#instalacja)
+  - [Node.js](#nodejs)
+  - [Express.js](#expressjs)
+  - [axios.js](#axiosjs)
+  - [mysql.js](#mysqljs)
+  - [XAMPP](#xampp)
+- [Konfiguracja](#konfiguracja)
+  - [Łącznie Server.js z serwerem MySql](#łącznie-serverjs-z-serwerem-mysql)
+- [Testowanie](#testowanie)
+- [Materiały Pomocnicze](#materiały-pomocnicze)
+
+
 # Serwer API do aplikacji aidc
 
 Jedno z dwóch głównych repozytoriów związanych z projektem AIDC (Automatic identification and data capture).
