@@ -1,7 +1,13 @@
-function sres_getAccountInfo(pool, id){
+function Sres_getAccountInfo(pool, res, params){
+    Sres_promise(pool, params.id).then((rows) => {
+        res.send(rows[0]);
+    }).catch((error) => {console.log(error)})
+}
+
+function Sres_promise(pool, id){
+return new Promise((resolve, reject) => {
 
 const { query } = require('mysql');
-return new Promise((resolve, reject) => {
 
 pool.query(`SELECT * FROM \`klienci\` WHERE id = ${id}`, (error, results, fields) => {
     
@@ -21,5 +27,5 @@ pool.query(`SELECT * FROM \`klienci\` WHERE id = ${id}`, (error, results, fields
 }
 
 module.exports={
-    sres_getAccountInfo: sres_getAccountInfo,
+    Sres_getAccountInfo,
 }

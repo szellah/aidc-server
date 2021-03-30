@@ -1,6 +1,6 @@
 const {createPool} = require('mysql');
 
-const pool =  createPool({
+const mysqlpool =  createPool({
     connectionLimit: 10,
     host     : 'localhost',
     user     : 'root',
@@ -11,5 +11,5 @@ const pool =  createPool({
 
 
 module.exports={
-    pool,
+    mysqlpool,
 }

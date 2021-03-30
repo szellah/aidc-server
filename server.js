@@ -1,30 +1,16 @@
-const {sres_getAccountInfo} = require('./serverResponses/sres_getAccountInfo');
 const express = require('express');
-const app = express();
+const api = express();
 const port = 8080;
-const { pool: globalPool } = require('./mysqlClient/mysqlClient')
+const { mysqlpool: globalPool } = require('./mysqlClient/MysqlPool');
+const Sres_lib = require('./serverResponses/Sres_lib');
 
+api.use(express.json());
+api.use(express.urlencoded({extended: false}));
 
-// const mysql = require('mysql');
-
-// const globalPool = mysql.createPool({
-//     connectionLimit: 10,
-//     host     : 'localhost',
-//     user     : 'root',
-//     password : '',
-//     database : 'c_sharp'
-//   });
-
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-
-app.post('/', (req,res) => {
-    // console.log(pool);
-    sres_getAccountInfo(globalPool, req.body.id).then((rows) => {
-        res.send(rows[0]);
-    }).catch((error) => {console.log(error)})
+api.post('/', (req,res) => {
+    Sres_lib.getAccountInfo(globalPool, res, req.body);
 });
 
-app.listen(port, () => {
+api.listen(port, () => {
     console.log('express start');
 });
