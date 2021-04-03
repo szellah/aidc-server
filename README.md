@@ -1,5 +1,10 @@
 # AIDC-SERVER
 by SGGW WZIM Inf. 2019/gr.4
+</br>
+>Sprawdź również [AIDC-CLIENT](https://github.com/szellah/aidc-client)
+
+</br></br>
+
 
 # Spis treści
 - [Sposób działania](#sposób-działania)
@@ -15,7 +20,7 @@ by SGGW WZIM Inf. 2019/gr.4
   - [Łącznie Server.js z serwerem MySql](#łącznie-serverjs-z-serwerem-mysql)
 - [Testowanie](#testowanie)
 - [Materiały Pomocnicze](#materiały-pomocnicze)
-
+</br></br></br>
 
 
 
