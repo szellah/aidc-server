@@ -5,7 +5,7 @@ const mysqlpool =  createPool({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'aidc_db'
+    database : 'terminarz_baza'
   });
 
 
