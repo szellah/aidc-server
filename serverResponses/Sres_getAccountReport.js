@@ -1,4 +1,4 @@
-function Sres_test(pool, res, params){
+function Sres_getAccountReport(pool, res, params){
     Sres_promise(pool, params.id).then((rows) => {
         res.send(rows);
     }).catch((error) => {console.log(error)})
@@ -11,18 +11,20 @@ const { query } = require('mysql');
 
 pool.query(`SELECT AccountId, Name, Surname, Email FROM \`accounts\` `, (error, results, fields) => {
     
-    let notification;
-
     if(error)
     {
-        notification = { error: true, message : error };
+        reject(error);
     }
     else
     {
-        notification = { error: false, message :  "hej udało się"};
+        //console.log(fields);
+
+        let table = results.map((row) => {
+            return { key : row.AccountId, fields : [row.Name, row.Surname, row.Email]};
+        });
+        console.log(table);
+        resolve(table);
     }
-    console.log(notification);
-    resolve(notification);
 });
 
 });
@@ -30,5 +32,5 @@ pool.query(`SELECT AccountId, Name, Surname, Email FROM \`accounts\` `, (error, 
 }
 
 module.exports={
-    Sres_test,
+    Sres_getAccountReport,
 }

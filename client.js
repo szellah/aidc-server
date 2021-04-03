@@ -5,7 +5,7 @@ const queryParams = {
 };
 
 
-axios.post('http://localhost:8080', queryParams)
+axios.post('http://192.168.1.80:8080/test', queryParams)
 .then(res => {
     console.log(res.data)
 })
