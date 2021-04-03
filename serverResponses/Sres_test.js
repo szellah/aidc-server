@@ -20,7 +20,7 @@ pool.query(`SELECT AccountId, Name, Surname, Email FROM \`accounts\` `, (error, 
         //console.log(fields);
 
         let table = results.map((row) => {
-            return { id : row.AccountId, fields : [row.Name, row.Surname, row.Email]};
+            return { key : row.AccountId, fields : [row.Name, row.Surname, row.Email]};
         });
         console.log(table);
         resolve(table);
