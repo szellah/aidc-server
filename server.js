@@ -8,7 +8,7 @@ api.use(express.json());
 api.use(express.urlencoded({extended: false}));
 
 api.post('/', (req,res) => {
-    Sres_lib.getAccountInfo(globalPool, res, req.body);
+    Sres_lib.test(globalPool, res, req.body);
 });
 
 api.listen(port, () => {
