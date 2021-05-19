@@ -1,20 +1,8 @@
 function Sres_test(pool, res, params){
 
-    let content = {error: null, message: null};
-
-    Sres_promise(pool, params.id)
-    .then((message) => 
-    {
-        content.error = false;
-        content.message = message;
-    })
-    .catch((error) => { 
-        content.error = true;
-        content.message = error;
-    })
-    .finally(() => {
-        res.send(content);
-    })
+    const {ServerResponse} = require('./ServerResponse');
+    const contentCreator = Sres_promise(pool, params.id);
+    ServerResponse(contentCreator, res);
 }
 
 function Sres_promise(pool, id){
