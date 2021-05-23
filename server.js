@@ -19,6 +19,32 @@ api.post('/getAccountReport', (req,res) => {
     Sres_lib.getAccountReport(globalPool, res, req.body);
 });
 
+api.post("/getArticleInfo", (req, res) => {
+    Sres_lib.getArticleInfo(globalPool, res, req.body);
+});
+
+api.post("/getNameInfo", (req, res) => {
+    Sres_lib.getNameInfo(globalPool, res, req.body);
+});
+
+api.post("/testowy", (req, res) => {
+    Sres_lib.getNameInfo(globalPool, res, req.body);
+});
+
+
+
+
+api.post("/login", (req, res) => {
+    Sres_lib.login(globalPool, res, req.body);
+});
+
+
+
+
+api.post("/test2", (req, res) => {
+    
+})
+
 api.listen(port, () => {
     console.log('express start');
 });
