@@ -1,7 +1,8 @@
 const axios = require('axios');
 
 const queryParams = {
-    id : 1
+    username: "TKarolak",
+    password: "admin"
 };
 
 
@@ -22,7 +23,7 @@ const queryParams = {
 // })
 
 
-axios.post('http://192.168.0.4:8080/testowy')
+axios.post('http://192.168.0.4:8080/login', queryParams)
 .then(res => {
     console.log(res.data)
 })
