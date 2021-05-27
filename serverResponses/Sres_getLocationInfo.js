@@ -1,4 +1,4 @@
-function Sres_getAccountInfo(pool, res, params) {
+function Sres_getLocationInfo(pool, res, params) {
 	Sres_promise(pool, params.id)
 		.then((rows) => {
 			res.send(rows[0]);
@@ -8,12 +8,12 @@ function Sres_getAccountInfo(pool, res, params) {
 		});
 }
 
-function Sres_promise(pool, { id }) {
+function Sres_promise(pool, { locationId }) {
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');
 
 		pool.query(
-			`SELECT * FROM \`accounts\` WHERE AccountId = ${id}`,
+			`SELECT * FROM \`locations\` WHERE LocationId = ${locationId}`,
 			(error, results, fields) => {
 				if (error) {
 					reject('error');
@@ -27,5 +27,5 @@ function Sres_promise(pool, { id }) {
 }
 
 module.exports = {
-	Sres_getAccountInfo,
+	Sres_getLocationInfo,
 };
