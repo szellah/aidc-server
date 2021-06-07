@@ -1,3 +1,4 @@
+
 function Sres_getLocationInfo(pool, res, params){
 
     const { ServerResponse } = require('./ServerResponse');
@@ -31,3 +32,4 @@ pool.query(`SELECT * FROM \`locations\` WHERE LocationId = ${locationId}`, (erro
 module.exports={
     Sres_getLocationInfo,
 }
+
