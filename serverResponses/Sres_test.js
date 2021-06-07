@@ -1,4 +1,6 @@
+
 var SHA256 = require("crypto-js/sha256");
+
 
 
 //funckja Sres która pobiera specjalnie stworzony Sres_Promise i odsyła jego wynik.
@@ -15,6 +17,7 @@ function Sres_test(pool, res, params) {
 }
 
 //pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
+
 
 function Sres_promise(pool, { userId, password }) {
 
@@ -37,9 +40,12 @@ function Sres_promise(pool, { userId, password }) {
 
 
 
+
 	});
 }
 
 module.exports = {
 	Sres_test,
+
 };
+

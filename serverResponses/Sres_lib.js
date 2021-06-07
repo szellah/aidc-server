@@ -1,7 +1,11 @@
 
 const { Sres_getAccountInfo } = require('./Sres_getAccountInfo');
+const { Sres_getArticleInfo } = require('./Sres_getArticleInfo');
+const { Sres_getLocationInfo } = require('./Sres_getLocationInfo');
 const { Sres_getAccountReport } = require('./Sres_getAccountReport');
 const { Sres_test } = require('./Sres_test');
+
+
 
 const { Sres_changeAccountPasword } = require('./Sres_changeAccountPasword');
 
@@ -22,6 +26,7 @@ module.exports = {
 	getAccountReport: Sres_getAccountReport,
 	changeAccountPasword: Sres_changeAccountPasword,
   
+  getArticleInfo: Sres_getArticleInfo,
   addNewArticle: Sres_addNewArticle,
   updateArticleInfo: Sres_updateArticleInfo,
   deleteArticle: Sres_deleteArticle,
@@ -33,4 +38,3 @@ module.exports = {
 	updateLocation: Sres_updateLocation,
 	deleteLocation: Sres_deleteLocation,
 };
-

@@ -54,10 +54,17 @@ api.post('/changeAccountPasword', (req, res) => {
   
   
   
+  
+
+
+api.post('/getArticleInfo', (req,res) => {
+    Sres_lib.getArticleInfo(globalPool, res, req.body);
+});
 
 
 api.post("/addNewArticle", (req, res) => {
     Sres_lib.addNewArticle(globalPool, res, req.body);
+
 });
 
 api.post("/updateArticleInfo", (req, res) => {

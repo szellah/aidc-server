@@ -1,5 +1,4 @@
-
-function Sres_getLocationInfo(pool, res, params){
+function Sres_getArticleInfo(pool, res, params){
 
     const { ServerResponse } = require('./ServerResponse');
 
@@ -8,13 +7,13 @@ function Sres_getLocationInfo(pool, res, params){
     ServerResponse(contentCreator, res);
 }
 
-function Sres_promise(pool, {locationId}){
+function Sres_promise(pool, {articleId}){
 return new Promise((resolve, reject) => {
 
 const { query } = require('mysql');
 
-pool.query(`SELECT * FROM \`locations\` WHERE LocationId = ${locationId}`, (error, results, fields) => {
-    
+pool.query(`SELECT * FROM \`articles\` WHERE ArticleId = ${articleId}`, (error, results, fields) => {
+
     if(error)
     {
         reject(error.message);
@@ -30,6 +29,5 @@ pool.query(`SELECT * FROM \`locations\` WHERE LocationId = ${locationId}`, (erro
 }
 
 module.exports={
-    Sres_getLocationInfo,
+    Sres_getArticleInfo,
 }
-

@@ -1,5 +1,6 @@
 {
 
+
 	"name": "aidc-server",
 	"version": "1.0.0",
 	"description": "by SGGW WZIM Inf. 2019/gr.4\r </br>\r >Sprawdź również [AIDC-CLIENT](https://github.com/szellah/aidc-client)",
@@ -26,5 +27,6 @@
 		"url": "https://github.com/szellah/aidc-server/issues"
 	},
 	"homepage": "https://github.com/szellah/aidc-server#readme"
+
 
 }
