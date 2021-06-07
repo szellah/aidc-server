@@ -18,6 +18,7 @@ function Sres_promise(pool, { id }) {
 				if (error) {
 					reject(error);
 				} else {
+
 					let table = results.map((row) => {
 						return {
 							key: row.AccountId,
@@ -34,4 +35,6 @@ function Sres_promise(pool, { id }) {
 
 module.exports = {
 	Sres_getAccountReport,
+
 };
+

@@ -15,6 +15,7 @@ function Sres_test(pool, res, params) {
 }
 
 //pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
+
 function Sres_promise(pool, { userId, password }) {
 
 	return new Promise((resolve, reject) => {
@@ -22,14 +23,19 @@ function Sres_promise(pool, { userId, password }) {
 
         pool.query(
 			`UPDATE accounts SET Password="${SHA256(password)}" WHERE AccountId = ${userId}`,
+
 			(error, results, fields) => {
 				if (error) {
 					reject(error.message);
 				} else {
+
                     resolve(`Zmieniono haslo`);
+
 				}
 			}
 		);
+
+
 
 	});
 }
