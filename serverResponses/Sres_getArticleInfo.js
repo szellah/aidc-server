@@ -1,24 +1,26 @@
-function Sres_getArticlesInfo(pool, res, params){
-    Sres_promise(pool, params.id).then((rows) => {
-        res.send(rows[0]);
-    }).catch((error) => {console.log(error)})
+function Sres_getArticleInfo(pool, res, params){
+
+    const { ServerResponse } = require('./ServerResponse');
+
+    const contentCreator = Sres_promise(pool, params);
+
+    ServerResponse(contentCreator, res);
 }
 
-function Sres_promise(pool, id){
+function Sres_promise(pool, {articleId}){
 return new Promise((resolve, reject) => {
 
 const { query } = require('mysql');
 
-pool.query(`SELECT * FROM \`articles\` WHERE ArticleId = ${id}`, (error, results, fields) => {
-    
+pool.query(`SELECT * FROM \`articles\` WHERE ArticleId = ${articleId}`, (error, results, fields) => {
+
     if(error)
     {
-        reject('error');
+        reject(error.message);
     }
     else
     {
-        console.log(results[0]);
-        resolve(results);
+        resolve(results[0]);
     }
 });
 
@@ -27,5 +29,5 @@ pool.query(`SELECT * FROM \`articles\` WHERE ArticleId = ${id}`, (error, results
 }
 
 module.exports={
-    Sres_getArticlesInfo,
+    Sres_getArticleInfo,
 }

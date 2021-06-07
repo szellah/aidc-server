@@ -15,6 +15,14 @@ api.post('/getAccountInfo', (req,res) => {
     Sres_lib.getAccountInfo(globalPool, res, req.body);
 });
 
+api.post('/getArticleInfo', (req,res) => {
+    Sres_lib.getArticleInfo(globalPool, res, req.body);
+});
+
+api.post('/getLocationInfo', (req,res) => {
+    Sres_lib.getLocationInfo(globalPool, res, req.body);
+});
+
 api.post('/getAccountReport', (req,res) => {
     Sres_lib.getAccountReport(globalPool, res, req.body);
 });

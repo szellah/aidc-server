@@ -1,12 +1,12 @@
 const axios = require('axios');
 
 const queryParams = {
-    Id : 13,
+    accountId : 1,
   
 };
 
 
-axios.post('http://localhost:8080/test', queryParams)
+axios.post('http://localhost:8080/getAccountInfo', queryParams)
 .then(res => {
     console.log(res.data)
 })
