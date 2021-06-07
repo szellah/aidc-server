@@ -18,7 +18,6 @@ function Sres_promise(pool, { id }) {
 				if (error) {
 					reject(error);
 				} else {
-					//console.log(fields);
 
 					let table = results.map((row) => {
 						return {
@@ -36,4 +35,6 @@ function Sres_promise(pool, { id }) {
 
 module.exports = {
 	Sres_getAccountReport,
+
 };
+

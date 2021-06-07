@@ -17,4 +17,6 @@ function ServerResponse(contentCreator, res) {
 
 module.exports = {
 	ServerResponse,
+
 };
+

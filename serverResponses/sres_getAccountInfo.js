@@ -16,7 +16,9 @@ function Sres_promise(pool, { id }) {
 			`SELECT * FROM \`accounts\` WHERE AccountId = ${id}`,
 			(error, results, fields) => {
 				if (error) {
-					reject('error');
+
+					reject(error);
+
 				} else {
 					console.log(results[0]);
 					resolve(results);
@@ -28,4 +30,6 @@ function Sres_promise(pool, { id }) {
 
 module.exports = {
 	Sres_getAccountInfo,
+
 };
+
