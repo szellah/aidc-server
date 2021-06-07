@@ -38,9 +38,10 @@ api.post('/updateLocation', (req, res) => {
 
 api.post('/deleteLocation', (req, res) => {
 	Sres_lib.deleteLocation(globalPool, res, req.body);
+});
 
 
-	
+
   
 api.post('/addNewUser', (req,res) => {
 	Sres_lib.addNewUser(globalPool, res, req.body);
@@ -105,5 +106,4 @@ api.listen(port, () => {
 
     console.log("express start");
 });
-
 
