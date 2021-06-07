@@ -12,6 +12,6 @@ module.exports = {
 	getAccountReport: Sres_getAccountReport,
 	getLocationInfo: Sres_getLocationInfo,
 	addNewLocation: Sres_addNewLocation,
-	updateLocatiop: Sres_updateLocation,
+	updateLocation: Sres_updateLocation,
 	deleteLocation: Sres_deleteLocation,
 };

@@ -1,14 +1,12 @@
 function Sres_deleteLocation(pool, res, params) {
-	Sres_promise(pool, params.id)
-		.then((rows) => {
-			res.send(rows[0]);
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+	const { ServerResponse } = require('./ServerResponse');
+
+	const contentCreator = Sres_promise(pool, params);
+
+	ServerResponse(contentCreator, res);
 }
 
-function Sres_promise(pool, { locationId, historyId, userId }) {
+function Sres_promise(pool, { locationId, AccountId }) {
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');
 
@@ -18,22 +16,21 @@ function Sres_promise(pool, { locationId, historyId, userId }) {
 				if (error) {
 					reject(error.message);
 				} else {
-					console.log(`Usunięto lokalizację o LocationId=${locationId}`);
+					pool.query(
+						`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES ( NULL, 6, NOW(), ${locationId}, ${AccountId})`,
+						(error, results, fields) => {
+							if (error) {
+								reject(error.message);
+							} else {
+								resolve(`Usunięto lokalizację o id równym ${locationId}`);
+							}
+						}
+					);
 				}
 			}
 		);
 
-		pool.query(
-			`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES (${historyId}, 6, NOW(), ${locationId}, ${userId})`,
-			(error, results, fields) => {
-				if (error) {
-					reject(error.message);
-				} else {
-					console.log(results[0]);
-					resolve(results);
-				}
-			}
-		);
+		
 	});
 }
 

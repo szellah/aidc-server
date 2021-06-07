@@ -1,44 +1,42 @@
 function Sres_addNewLocation(pool, res, params) {
-	Sres_promise(pool, params.id)
-		.then((rows) => {
-			res.send(rows[0]);
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+
+		const { ServerResponse } = require('./ServerResponse');
+
+		const contentCreator = Sres_promise(pool, params);
+
+		ServerResponse(contentCreator, res);
 }
 
 function Sres_promise(
 	pool,
-	{ locationId, building, floor, room, historyId, userId }
+	{ Location, AccountId }
 ) {
+	const {building, floor, room} = Location;
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');
 
 		pool.query(
-			`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES (${locationId}, ${building}, ${floor}, ${room})`,
+			`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, ${building}, ${floor}, ${room})`,
 			(error, results, fields) => {
 				if (error) {
 					reject(error.message);
 				} else {
-					console.log(
-						`Dodano lokalizację {{ LocationId=${locationId}, Building=${building}, Floor=${floor}, Room=${room} }}`
+					const locationId = results.insertId;
+					pool.query(
+						`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES ( NULL, 5, NOW(), ${locationId}, ${AccountId})`,
+						(error, results, fields) => {
+							if (error) {
+								reject(error.message);
+							} else {
+								resolve(`Dodano lokalizację ${building}/ ${room} `);
+							}
+						}
 					);
 				}
 			}
 		);
 
-		pool.query(
-			`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES (${historyId}, 5, NOW(), ${locationId}, ${userId})`,
-			(error, results, fields) => {
-				if (error) {
-					reject(error.message);
-				} else {
-					console.log(results[0]);
-					resolve(results);
-				}
-			}
-		);
+		
 	});
 }
 
