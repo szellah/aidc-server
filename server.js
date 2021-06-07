@@ -38,9 +38,25 @@ api.post('/updateLocation', (req, res) => {
 
 api.post('/deleteLocation', (req, res) => {
 	Sres_lib.deleteLocation(globalPool, res, req.body);
+});
+
+
 
   
+api.post('/addNewUser', (req,res) => {
+	Sres_lib.addNewUser(globalPool, res, req.body);
+});
+
+api.post('/deleteUser', (req,res) => {
+	Sres_lib.deleteUser(globalPool, res, req.body);
+});
+
+api.post('/updateUser', (req,res) => {
+	Sres_lib.updateUser(globalPool, res, req.body);
+});
   
+
+
 
 api.post('/test', (req, res) => {
 	Sres_lib.test(globalPool, res, req.body);
@@ -90,5 +106,4 @@ api.listen(port, () => {
 
     console.log("express start");
 });
-
 
