@@ -20,6 +20,13 @@ const { Sres_addNewLocation } = require('./Sres_addNewLocation');
 const { Sres_updateLocation } = require('./Sres_updateLocation');
 const { Sres_deleteLocation } = require('./Sres_deleteLocation');
 
+
+const { Sres_addNewUser } = require('./Sres_addNewUser');
+const { Sres_deleteUser } = require('./Sres_deleteUser');
+const { Sres_updateUser } = require('./Sres_updateUser');
+
+
+
 module.exports = {
 	test: Sres_test,
 	getAccountInfo: Sres_getAccountInfo,
@@ -37,4 +44,8 @@ module.exports = {
 	addNewLocation: Sres_addNewLocation,
 	updateLocation: Sres_updateLocation,
 	deleteLocation: Sres_deleteLocation,
+
+  addNewUser: Sres_addNewUser,
+  deleteUser: Sres_deleteUser,
+  updateUser: Sres_updateUser,
 };
