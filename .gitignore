@@ -1,1 +1,8 @@
 node_modules/**/*
+
+doc/*
+doc/**/*
+docs/*
+docs/**/*
+
+serverResponses/Sres_test.js

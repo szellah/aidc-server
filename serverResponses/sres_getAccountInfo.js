@@ -11,10 +11,7 @@ function Sres_getAccountInfo(pool, res, params){
 function Sres_promise(pool, {accountId}){
 return new Promise((resolve, reject) => {
 
-		pool.query(
-			`SELECT * FROM \`accounts\` WHERE AccountId = ${id}`,
-			(error, results, fields) => {
-				if (error) {
+
 
 
 pool.query(`SELECT AccountId, Name, Surname, Login, Email, Rank, State FROM accounts WHERE AccountId = ${accountId}`, (error, results, fields) => {
@@ -31,15 +28,8 @@ pool.query(`SELECT AccountId, Name, Surname, Login, Email, Rank, State FROM acco
 
 });
 
-
-				} else {
-					console.log(results[0]);
-					resolve(results);
-				}
-			}
-		);
-	});
 }
+	
 
 module.exports = {
 	Sres_getAccountInfo,

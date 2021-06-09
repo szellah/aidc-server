@@ -3,23 +3,12 @@ const axios = require("axios");
 const queryParams = {
 
 
-    article: {
-        ArticleId: 312,
-        Name: "testUpdate2",
-        category: "testUpdate2",
-        location: 4,
-        description: "testUpdateOpis",
-    },
-
-    ArticleId: 314,
-    LocationId: 12,
-    AccountId: 1,
-    UserId: 1,
+    accountId: 2
 
 };
 
 axios
-    .post("http://localhost:8080/dislocateArticle", queryParams)
+    .post("http://localhost:8080/getAccountInfo", queryParams)
     .then((res) => {
         console.log(res.data);
     })
