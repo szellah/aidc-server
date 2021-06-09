@@ -8,9 +8,10 @@ const queryParams = {
 };
 
 axios
-    .post("http://localhost:8080/getAccountInfo", queryParams)
+    .post("http://localhost:8080/getAccountInfo", {accountId: 2})
     .then((res) => {
-        console.log(res.data);
+        let r = res.data;
+        console.log(r.message.Name);
     })
     .catch((error) => {
         console.error(error);

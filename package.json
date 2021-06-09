@@ -1,20 +1,20 @@
 {
-
-
 	"name": "aidc-server",
 	"version": "1.0.0",
 	"description": "by SGGW WZIM Inf. 2019/gr.4\r </br>\r >Sprawdź również [AIDC-CLIENT](https://github.com/szellah/aidc-client)",
 	"main": "client.js",
 	"dependencies": {
 		"axios": "^0.21.1",
+		"crypto-js": "^4.0.0",
 		"express": "^4.17.1",
-    "crypto-js": "^4.0.0",
+		"jest": "^27.0.4",
+		"jest-html-reporter": "^3.4.1",
 		"mysql": "^2.18.1",
 		"nodemon": "^2.0.7"
 	},
 	"devDependencies": {},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "jest",
 		"start": "nodemon server.js"
 	},
 	"repository": {
@@ -26,7 +26,17 @@
 	"bugs": {
 		"url": "https://github.com/szellah/aidc-server/issues"
 	},
-	"homepage": "https://github.com/szellah/aidc-server#readme"
-
-
+	"homepage": "https://github.com/szellah/aidc-server#readme",
+	"jest": {
+		"testEnvironment": "node",
+		"reporters": [
+			"default",
+			[
+				"./node_modules/jest-html-reporter",
+				{
+					"pageTitle": "Test Report"
+				}
+			]
+		]
+	}
 }
