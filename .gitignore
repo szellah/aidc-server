@@ -5,6 +5,7 @@ tests/**/*
 
 doc/*
 doc/**/*
-
+docs/*
+docs/**/*
 
 serverResponses/Sres_test.js
