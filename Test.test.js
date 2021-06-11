@@ -2,6 +2,10 @@ const axios = require("axios");
 
 //testowanie funkcji Sres_getAccountInfo
 test("Przetestowanie wyświetlenia informacji o użytkowniku", () => {
+<<<<<<< Updated upstream
+=======
+  expect.assertions(1);
+>>>>>>> Stashed changes
   return axios
           .post("http://localhost:8080/getAccountInfo", {accountId: 2})
           .then((res) => {
@@ -19,6 +23,10 @@ test("Przetestowanie wyświetlenia informacji o użytkowniku", () => {
 });
 
 test("Przetestowanie wyświetlenia informacji o użytkowniku bez podania argumentu", () => {
+<<<<<<< Updated upstream
+=======
+  expect.assertions(1);
+>>>>>>> Stashed changes
   return expect(axios
           .post("http://localhost:8080/getAccountInfo", {})
           .then((res) => {
@@ -30,6 +38,10 @@ test("Przetestowanie wyświetlenia informacji o użytkowniku bez podania argumen
 //testuje funkcje Sres_getLocationInfo
 
 test("Przetestowanie wyświetlenia informacji o lokacji", () => {
+<<<<<<< Updated upstream
+=======
+  expect.assertions(1);
+>>>>>>> Stashed changes
   return axios
           .post("http://localhost:8080/getLocationInfo", {locationId:9})
           .then((res) => {
@@ -40,6 +52,10 @@ test("Przetestowanie wyświetlenia informacji o lokacji", () => {
 });
 
 test("Przetestowanie wyświetlenia informacji o Lokalizacji bez podania argumentu", () => {
+<<<<<<< Updated upstream
+=======
+  expect.assertions(1);
+>>>>>>> Stashed changes
   return expect(axios
           .post("http://localhost:8080/getLocationInfo", {locationId:9})
           .then((res) => {
@@ -50,6 +66,10 @@ test("Przetestowanie wyświetlenia informacji o Lokalizacji bez podania argument
 
 //przetestowanie funkcji Sres_getArticleInfo
 test("Przetestowanie wyświetlenia informacji o artykule", () => {
+<<<<<<< Updated upstream
+=======
+  expect.assertions(1);
+>>>>>>> Stashed changes
   return axios
           .post("http://localhost:8080/getArticleInfo", {articleId:5})
           .then((res) => {
@@ -67,6 +87,10 @@ test("Przetestowanie wyświetlenia informacji o artykule", () => {
 
 });
 test("Przetestowanie wyświetlenia informacji o artykule bez podania argumentu", () => {
+<<<<<<< Updated upstream
+=======
+  expect.assertions(1);
+>>>>>>> Stashed changes
   return expect(axios
           .post("http://localhost:8080/getArticleInfo", {})
           .then((res) => {
