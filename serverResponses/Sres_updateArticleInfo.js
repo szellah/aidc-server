@@ -14,7 +14,7 @@ function Sres_updateArticleInfo(pool, res, params) {
 //pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
 function Sres_promise(
     pool,
-    { UserId, article: { ArticleId, Name, category, location, description } }
+    { UserId, article: { ArticleId, Name, Category, LocationId, Description } }
 ) {
     return new Promise((resolve, reject) => {
         //pobranie funkcji query z mysql
@@ -26,7 +26,7 @@ function Sres_promise(
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
         pool.query(
-            `UPDATE articles SET LocationId = '${location}', Category = '${category}', Name = '${Name}', Description = '${description}' WHERE ArticleId = ${ArticleId}`,
+            `UPDATE articles SET LocationId = '${LocationId}', Category = '${Category}', Name = '${Name}', Description = '${Description}' WHERE ArticleId = ${ArticleId}`,
             (error) => {
                 //prosty handling błędu
                 if (error) reject(error);

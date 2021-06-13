@@ -24,6 +24,8 @@ const { Sres_addNewUser } = require('./Sres_addNewUser');
 const { Sres_deleteUser } = require('./Sres_deleteUser');
 const { Sres_updateUser } = require('./Sres_updateUser');
 
+const { Sres_getArticleCategories } = require('./Sres_getArticleCategories');
+
 
 
 module.exports = {
@@ -47,4 +49,6 @@ module.exports = {
   addNewUser: Sres_addNewUser,
   deleteUser: Sres_deleteUser,
   updateUser: Sres_updateUser,
+
+  getArticleCategories: Sres_getArticleCategories
 };

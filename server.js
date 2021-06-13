@@ -99,11 +99,14 @@ api.post("/dislocateArticle", (req, res) => {
     Sres_lib.dislocateArticle(globalPool, res, req.body);
 });
 
-  
+
+api.post("/getArticleCategories", (req, res) => {
+    Sres_lib.getArticleCategories(globalPool, res);
+});
   
 
 api.listen(port, () => {
 
-    console.log("express start");
+    console.log("AIDC-SERVER WULS IO gr.4");
 });
 
