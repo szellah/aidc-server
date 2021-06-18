@@ -32,7 +32,7 @@ api.post('/addNewLocation', (req, res) => {
 	Sres_lib.addNewLocation(globalPool, res, req.body);
 });
 
-api.post('/updateLocation', (req, res) => {
+api.post('/updateLocationInfo', (req, res) => {
 	Sres_lib.updateLocation(globalPool, res, req.body);
 });
 

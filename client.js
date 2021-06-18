@@ -2,12 +2,17 @@ const axios = require("axios");
 
 const queryParams = {
     
-        articleId: 300
+        AccountId: 12,
+        Location:{
+            building: 4,
+            floor: 123,
+            room: 33,
+        }
     
 };
 
 axios
-    .post("http://localhost:8080/getArticleInfo", queryParams)
+    .post("http://localhost:8080/addNewLocation", queryParams)
     .then((res) => {
         console.log(res.data);
     })
