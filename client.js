@@ -1,18 +1,13 @@
 const axios = require("axios");
 
 const queryParams = {
-    UserId: 1,
-    article: {
-    ArticleId: parseInt("3"), 
-      Name: "day", 
-      Category: "klawiatura", 
-      LocationId: parseInt("8"), 
-      Description: ""
-    }
+    
+        articleId: 300
+    
 };
 
 axios
-    .post("http://localhost:8080/updateArticleInfo", queryParams)
+    .post("http://localhost:8080/getArticleInfo", queryParams)
     .then((res) => {
         console.log(res.data);
     })

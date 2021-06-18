@@ -8,7 +8,8 @@ function ServerResponse(contentCreator, res) {
 		})
 		.catch((error) => {
 			content.error = true;
-			content.message = error;
+			content.message = error.message;
+			console.log(error);
 		})
 		.finally(() => {
 			res.send(content);
