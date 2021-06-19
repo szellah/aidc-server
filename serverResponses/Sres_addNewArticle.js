@@ -25,6 +25,10 @@ function Sres_promise(
             .slice(0, 19)
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
+        if ((!Name || isEmpty(Name)) || (!Category || isEmpty(Category)) || (!LocationId) || (!Description || isEmpty(Description))) {
+            let err = {message: "Podano niepoprawne wartosci poszczegolnych pol"};
+            return reject(err);
+        }
         pool.query(
             `INSERT INTO articles ( LocationId, Category, Name, Description, AddtionDate, State) VALUES ('${LocationId}','${Category}','${Name}','${Description}', '${date.slice(
                 0,
@@ -48,6 +52,12 @@ function Sres_promise(
         );
     });
 }
+
+
+function isEmpty(str) {
+    return str.replace(/^\s+|\s+$/gm,'').length == 0;
+}
+
 
 module.exports = {
     Sres_addNewArticle,
