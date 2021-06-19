@@ -64,7 +64,7 @@ api.post('/test', (req, res) => {
 
 
   
-api.post('/changeAccountPasword', (req, res) => {
+api.post('/changeAccountPassword', (req, res) => {
 	Sres_lib.changeAccountPasword(globalPool, res, req.body);
 });
   
