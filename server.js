@@ -23,6 +23,10 @@ api.post('/getAccountReport', (req, res) => {
 });
 
 
+api.post('/getArticleReport', (req, res) => {
+	Sres_lib.getArticleReport(globalPool, res, req.body);
+});
+
 
 api.post('/getLocationInfo', (req, res) => {
 	Sres_lib.getLocationInfo(globalPool, res, req.body);
@@ -100,10 +104,25 @@ api.post("/dislocateArticle", (req, res) => {
 });
 
 
+
+
 api.post("/getArticleCategories", (req, res) => {
     Sres_lib.getArticleCategories(globalPool, res);
 });
+
+api.post("/getBuildings", (req, res) => {
+    Sres_lib.getBuildings(globalPool, res);
+});
   
+api.post("/getFloors", (req, res) => {
+    Sres_lib.getFloors(globalPool, res, req.body);
+});
+  
+api.post("/getRooms", (req, res) => {
+    Sres_lib.getRooms(globalPool, res, req.body);
+});
+  
+
 
 api.listen(port, () => {
 

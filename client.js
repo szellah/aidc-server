@@ -1,12 +1,13 @@
 const axios = require("axios");
 
 const queryParams = {
-    UserId: 1,
-    User:  { Name: "Jank", Surname: "Kowalski", Login: "JKowal", Email: "Jkowal@wp.pl",Rank: 1, State: 1 }
+    reportChoice: "Budynek",
+    building: 1,
+    floor: 2
 };
 
 axios
-    .post("http://localhost:8080/addNewUser", queryParams)
+    .post("http://localhost:8080/getArticleReport", queryParams)
     .then((res) => {
         console.log(res.data);
     })
