@@ -1,4 +1,5 @@
-function Sres_getArticleInfo(pool, res, params){
+
+function Sres_getLocationInfo(pool, res, params){
 
     const { ServerResponse } = require('./ServerResponse');
 
@@ -7,19 +8,16 @@ function Sres_getArticleInfo(pool, res, params){
     ServerResponse(contentCreator, res);
 }
 
-function Sres_promise(pool, {articleId}){
+function Sres_promise(pool, {locationId}){
 return new Promise((resolve, reject) => {
 
 const { query } = require('mysql');
 
-pool.query(`SELECT * FROM \`articles\` WHERE ArticleId = ${articleId}`, (error, results, fields) => {
-
+pool.query(`SELECT * FROM \`locations\` WHERE LocationId = ${locationId}`, (error, results, fields) => {
+    
     if(error)
     {
         reject(error.message);
-    }
-    else if(!results[0]){
-        reject(new Error("nie ma takiego artykułu"));
     }
     else
     {
@@ -32,5 +30,6 @@ pool.query(`SELECT * FROM \`articles\` WHERE ArticleId = ${articleId}`, (error, 
 }
 
 module.exports={
-    Sres_getArticleInfo,
+    Sres_getLocationInfo,
 }
+
