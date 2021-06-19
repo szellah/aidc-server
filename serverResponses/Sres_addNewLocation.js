@@ -23,12 +23,12 @@ function Sres_promise(
 				} else {
 					const locationId = results.insertId;
 					pool.query(
-						`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES ( NULL, 5, NOW(), ${locationId}, ${AccountId})`,
+						`INSERT INTO \`history\` (Action, Time, FirstId, SecondId) VALUES ( 5, NOW(), ${locationId}, ${AccountId})`,
 						(error, results, fields) => {
 							if (error) {
 								reject(error.message);
 							} else {
-								resolve(`Dodano lokalizację ${building}/ ${room} `);
+								resolve(`Dodano lokalizację ${building}/ ${floor} /${room} `);
 							}
 						}
 					);

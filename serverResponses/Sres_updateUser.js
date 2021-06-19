@@ -7,7 +7,7 @@ function Sres_updateUser(pool, res, params) {
 
 function Sres_promise(
     pool,
-    { UserId, User: { accountid, name, surname, login, password, email,rank, state, inventoryid,personaluseid } }
+    { UserId, User: { AccountId, Name, Surname, Login, Email,Rank, State } }
 ) {
     return new Promise((resolve, reject) => {
         const { query } = require("mysql");
@@ -18,18 +18,18 @@ function Sres_promise(
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
         pool.query(
-            `UPDATE accounts SET Name = '${name}', Surname = '${surname}', Login = '${login}', Password = '${password}', Email = '${email}', Rank = '${rank}', State = '${state}', InventoryId = '${inventoryid}', Personaluseid = '${personaluseid}' WHERE AccountId = ${accountid}`,
+            `UPDATE accounts SET Name = '${Name}', Surname = '${Surname}', Login = '${Login}', Email = '${Email}', Rank = '${Rank}', State = '${State}' WHERE AccountId = ${AccountId}`,
             (error) => {
                 //prosty handling błędu
                 if (error) reject(error);
                 // jeżeli nigdzie nie pojawił się błąd to wpis do historii
                 else {
                     pool.query(
-                        `INSERT INTO history (Action, Time, FirstId, SecondId) VALUES ('10','${date}','${accountid}','${UserId}')`,
+                        `INSERT INTO history (Action, Time, FirstId, SecondId) VALUES ('10','${date}','${AccountId}','${UserId}')`,
                         (error) => {
                             if (error) reject(error);
                             // zwracanie wiadomości
-                            else resolve(`Zmieniono dane użytkownika ${name}`);
+                            else resolve(`Zmieniono dane użytkownika ${Name}`);
                         }
                     );
                 }

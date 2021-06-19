@@ -1,17 +1,14 @@
 const axios = require("axios");
 
 const queryParams = {
-
-
-    accountId: 2
-
+    UserId: 1,
+    User:  { Name: "Jank", Surname: "Kowalski", Login: "JKowal", Email: "Jkowal@wp.pl",Rank: 1, State: 1 }
 };
 
 axios
-    .post("http://localhost:8080/getAccountInfo", {accountId: 2})
+    .post("http://localhost:8080/addNewUser", queryParams)
     .then((res) => {
-        let r = res.data;
-        console.log(r.message.Name);
+        console.log(res.data);
     })
     .catch((error) => {
         console.error(error);

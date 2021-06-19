@@ -14,7 +14,7 @@ function Sres_addNewArticle(pool, res, params) {
 //pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
 function Sres_promise(
     pool,
-    { UserId, article: { Name, category, location, description } }
+    { UserId, article: { Name, Category, LocationId, Description } }
 ) {
     return new Promise((resolve, reject) => {
         //pobranie funkcji query z mysql
@@ -26,7 +26,7 @@ function Sres_promise(
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
         pool.query(
-            `INSERT INTO articles ( LocationId, Category, Name, Description, AddtionDate, State) VALUES ('${location}','${category}','${Name}','${description}', '${date.slice(
+            `INSERT INTO articles ( LocationId, Category, Name, Description, AddtionDate, State) VALUES ('${LocationId}','${Category}','${Name}','${Description}', '${date.slice(
                 0,
                 10
             )}', '1')`,
