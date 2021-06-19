@@ -7,7 +7,7 @@ function Sres_addNewUser(pool, res, params) {
 
 function Sres_promise(
     pool,
-    { UserId, User: { name, surname, login, password, email,rank, state, inventoryid,personaluseid } }
+    { UserId, User: { Name, Surname, Login, Email,Rank, State } }
 ) {
     return new Promise((resolve, reject) => {
         //pobranie funkcji query z mysql
@@ -18,24 +18,36 @@ function Sres_promise(
             .slice(0, 19)
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
+        
         pool.query(
-            `INSERT INTO accounts ( AccountId, Name, Surname, Login, Password, Email, Rank, State, InventoryId, PersonalUseID) VALUES ( NULL ,'${name}','${surname}','${login}','${password}','${email}','${rank}','${state}','${inventoryid}','${personaluseid}')`,
+            `INSERT INTO accounts ( AccountId, Name, Surname, Login, Password, Email, Rank, State, InventoryId, PersonalUseID) VALUES ( NULL ,'${Name}','${Surname}','${Login}',' ','${Email}','${Rank}','${State}', 4, 4)`,
             (error, results) => {
-                //prosty handling błędu
-                if (error) reject(error);
-                // jeżeli nigdzie nie pojawił się błąd to wpis do historii
-                else {
+                const accountId = results.insertId;
+                pool.query(
+                    `INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, -1, 1, ${accountId}), ( NULL, -1, 2, ${accountId})`,
+                (error, results) => {
+                    const inventoryid = results.insertId;
+                    const personaluseid = results.insertId+1;
                     pool.query(
-                        `INSERT INTO history (Action, Time, FirstId, SecondId) VALUES ('8','${date}','${results.insertId}','${UserId}')`,
-                        (error) => {
-                            if (error) reject(error);
-                            // zwracanie wiadomości
-                            else resolve(`Dodano użytkownika ${name}`);
+                        `UPDATE accounts SET InventoryId = '${inventoryid}', Personaluseid = '${personaluseid}' WHERE AccountId = ${accountId}`,
+                    (error, results) => {
+                        //prosty handling błędu
+                        if (error) reject(error);
+                        // jeżeli nigdzie nie pojawił się błąd to wpis do historii
+                        else {
+                            pool.query(
+                                `INSERT INTO history (Action, Time, FirstId, SecondId) VALUES ('8','${date}','${results.insertId}','${UserId}')`,
+                                (error) => {
+                                    if (error) reject(error);
+                                    // zwracanie wiadomości
+                                    else resolve(`Dodano użytkownika ${Name}`);
+                                }
+                            );
                         }
-                    );
+                    });
                 }
-            }
-        );
+            );
+        });
     });
 }
 

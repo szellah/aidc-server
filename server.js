@@ -51,7 +51,7 @@ api.post('/deleteUser', (req,res) => {
 	Sres_lib.deleteUser(globalPool, res, req.body);
 });
 
-api.post('/updateUser', (req,res) => {
+api.post('/updateUserInfo', (req,res) => {
 	Sres_lib.updateUser(globalPool, res, req.body);
 });
   
