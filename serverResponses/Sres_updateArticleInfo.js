@@ -25,6 +25,10 @@ function Sres_promise(
             .slice(0, 19)
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
+        if ((!ArticleId) || (!Name || isEmpty(Name)) || (!Category || isEmpty(Category)) || (!LocationId) || (!Description || isEmpty(Description))) {
+            let err = {message: "Podano niepoprawne wartosci podczas edycji"};
+            return reject(err);
+        }
         pool.query(
             `UPDATE articles SET LocationId = '${LocationId}', Category = '${Category}', Name = '${Name}', Description = '${Description}' WHERE ArticleId = ${ArticleId}`,
             (error, results) => {
@@ -45,6 +49,12 @@ function Sres_promise(
         );
     });
 }
+
+
+function isEmpty(str) {
+    return str.replace(/^\s+|\s+$/gm,'').length == 0;
+}
+
 
 module.exports = {
     Sres_updateArticleInfo,
