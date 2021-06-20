@@ -16,6 +16,10 @@ api.post('/resetPassword', (req, res) => {
 	Sres_lib.resetPassword(globalPool, res, req.body);
 });
 
+api.post('/forgotPassword', (req, res) => {
+	Sres_lib.forgotPassword(globalPool, res, req.body);
+});
+
 
 api.post('/test', (req, res) => {
 	Sres_lib.test(globalPool, res, req.body);
