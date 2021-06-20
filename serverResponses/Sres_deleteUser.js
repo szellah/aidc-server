@@ -81,43 +81,6 @@ function Sres_promise(pool, { UserId, UserToDelete }) {
                             );
                         }
                     );
-                    // Zapytanie o liczbę artykułów przypisanych do inwentarza użytkownika
-                    // pool.query(
-                    //     `SELECT COUNT(articles.ArticleId) AS 'storedArticles' FROM articles WHERE (LocationId='${inventoryId}')
-                    // `,
-                    //     (error, results) => {
-                    //         msg =
-                    //             "Nie można usunąć użytkownika. Użytkownik ma przypisane przedmioty:";
-                    //         err = 0;
-                    //         inventoryItems = results[0].storedArticles;
-                    //         //prosty handling błędu
-                    //         if (error) reject(error);
-                    //         else if (inventoryItems !== 0) {
-                    //             msg += ` inwentarz - ${inventoryItems};`;
-                    //             err += 1;
-                    //         }
-
-                    //         // Zapytanie o liczbę artykułów wziętych przez użytkownika
-                    //         pool.query(
-                    //             `SELECT COUNT(articles.ArticleId) AS 'storedArticles' FROM articles WHERE (LocationId='${personalUseId}')`,
-                    //             (error, results) => {
-                    //                 personalUseItems =
-                    //                     results[0].storedArticles;
-
-                    //                 //prosty handling błędu
-                    //                 if (error) reject(error);
-                    //                 else if (personalUseItems !== 0) {
-                    //                     msg += ` zabrane - ${personalUseItems}`;
-                    //                     console.log(msg);
-                    //                     err += 1;
-                    //                 }
-                    //                 // jeżeli użytkownik ma jakies przedmioty
-                    //                 if (err > 0)
-                    //                     return reject({ message: msg });
-                    //             }
-                    //         );
-                    //     }
-                    // );
                 }
             }
         );
