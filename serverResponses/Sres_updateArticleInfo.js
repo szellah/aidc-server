@@ -33,7 +33,10 @@ function Sres_promise(
             `UPDATE articles SET LocationId = '${LocationId}', Category = '${Category}', Name = '${Name}', Description = '${Description}' WHERE ArticleId = ${ArticleId}`,
             (error, results) => {
                 //prosty handling błędu
-                if (error) reject(error);
+                if (error)
+                {   error.message="Podano niepoprawne wartosci podczas edycji";
+                    reject(error);
+                }
                 // jeżeli nigdzie nie pojawił się błąd to wpis do historii
                 else {
                     pool.query(

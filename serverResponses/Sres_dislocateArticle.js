@@ -23,10 +23,18 @@ function Sres_promise(pool, { ArticleId, AccountId }) {
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
         // Zapytanie o nazwę artykułu
+        if ((!ArticleId) || (!AccountId) ) {
+            let err = {message: "Podano niewłaściwe dane"};
+            return reject(err);
+        }
         pool.query(
             `SELECT Name FROM articles WHERE ArticleId = ${ArticleId}`,
             (error, results) => {
-                if (error) reject(error);
+                if (error) 
+                {
+                    error.message="Podano niewłaściwe dane";
+                    reject(error);
+                }                
                 else {
                     const name = results[0].Name;
                     // pobranie inventoryId z bazy

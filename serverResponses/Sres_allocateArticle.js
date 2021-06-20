@@ -23,6 +23,10 @@ function Sres_promise(pool, { ArticleId, LocationId }) {
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
         // Zapytanie o nazwę artykułu
+        if ((!ArticleId) || (!LocationId) ) {
+            let err = {message: "Podano niewłaściwe dane"};
+            return reject(err);
+        }
         pool.query(
             `SELECT Name FROM articles WHERE ArticleId = ${ArticleId}`,
             (error, results) => {

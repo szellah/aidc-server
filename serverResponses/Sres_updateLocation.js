@@ -13,7 +13,10 @@ function Sres_promise(
 	const {LocationId, Building, Floor, Room} = Location;
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');
-
+		if ((!LocationId) || (!Building) ||(!Floor) ||(!Room) ) {
+            let err = {message: "Podano niepoprawne wartosci podczas edycji"};
+            return reject(err);
+        }
 		pool.query(
 			`UPDATE \`locations\` SET \`Building\`=${Building},\`Floor\`=${Floor},\`Room\`=${Room} WHERE LocationId = ${LocationId}`,
 			(error, results, fields) => {
