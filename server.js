@@ -12,6 +12,10 @@ api.post('/login', (req, res) => {
 	Sres_lib.login(globalPool, res, req.body);
 });
 
+api.post('/resetPassword', (req, res) => {
+	Sres_lib.resetPassword(globalPool, res, req.body);
+});
+
 
 api.post('/test', (req, res) => {
 	Sres_lib.test(globalPool, res, req.body);
@@ -24,7 +28,7 @@ api.post('/getAccountInfo', (req, res) => {
 });
 
 api.post('/getAccountReport', (req, res) => {
-	Sres_lib.getAccountReport(globalPool, res, req.body);
+	Sres_lib.getAccountReport(globalPool, res);
 });
 
 

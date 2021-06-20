@@ -7,6 +7,7 @@ function ServerResponse(contentCreator, res) {
 			content.message = message;
 		})
 		.catch((error) => {
+			console.log(error);
 			content.error = true;
 			content.message = error.message;
 			console.log(error);

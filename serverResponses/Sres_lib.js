@@ -33,6 +33,8 @@ const { Sres_getRooms } = require("./Sres_getRooms");
 
 const { Sres_login } = require('./Sres_login');
 
+const { Sres_resetPassword } = require('./Sres_resetPassword');
+
 
 
 
@@ -66,6 +68,8 @@ module.exports = {
   getFloors: Sres_getFloors,
   getRooms: Sres_getRooms,
 
-  login: Sres_login
+  login: Sres_login,
+
+  resetPassword: Sres_resetPassword
 
 };

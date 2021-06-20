@@ -33,7 +33,11 @@ function Sres_promise(
 				`INSERT INTO accounts ( AccountId, Name, Surname, Login, Password, Email, Rank, State, InventoryId, PersonalUseID) VALUES ( NULL ,'${Name}','${Surname}','${Login}',' ','${Email}','${Rank}','${State}', 4, 4)`,
 				(error, results) => {
 					const accountId = results.insertId;
-					pool.query(
+					const {setupPassword} = require("./Sres_resetPassword");
+					setupPassword(pool, { UserId: accountId})
+					.then((message) => {
+						console.log(message);
+						pool.query(
 						`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, -1, 1, ${accountId}), ( NULL, -1, 2, ${accountId})`,
 						(error, results) => {
 							const inventoryid = results.insertId;
@@ -60,6 +64,11 @@ function Sres_promise(
 							);
 						}
 					);
+					})
+					.catch((error) => {
+						reject(error);
+					});
+
 				}
 			);
 		}

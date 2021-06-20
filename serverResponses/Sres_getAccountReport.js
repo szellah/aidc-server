@@ -9,6 +9,7 @@ function Sres_getAccountReport(pool, res, params) {
 function Sres_promise(pool) {
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');
+		
 
 		pool.query(
 			`SELECT AccountId, Name, Surname, Login FROM \`accounts\` `,
@@ -16,7 +17,6 @@ function Sres_promise(pool) {
 				if (error) {
 					reject(error);
 				} else {
-
 					let table = results.map((row) => {
 						return {
 							column1: row.Name,

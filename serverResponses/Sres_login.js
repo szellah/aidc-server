@@ -16,10 +16,10 @@ function Sres_promise(pool, {username, password}) {
 
         pool.query(`SELECT * FROM accounts WHERE Login = '${username}' AND Password = '${password}'`, (error, results) => {
             if (error) {
-                reject(error.message);
+                reject(error);
             }
             if (results.length === 0) {
-                reject("Niepoprawny login lub haslo");
+                reject(new Error("Niepoprawny login lub haslo"));
             }
             else {
                 // Tutaj byc moze wpis do historii, ale nie znalazlem jak ma wygladac

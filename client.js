@@ -1,8 +1,9 @@
 const axios = require("axios");
+const SHA256 = require('crypto-js/sha256');
+const {passwordGenerator} = require('./handlers/passwordGenerator');
 
 const queryParams = {
-    username: "TKarolak",
-    password: "admin"
+    UserId: 13
 };
 
 
@@ -23,12 +24,16 @@ const queryParams = {
 // })
 
 
-axios.post('http://192.168.0.4:8080/login', queryParams)
+axios.post('http://192.168.1.80:8080/resetPassword', queryParams)
 .then(res => {
     console.log(res.data)
 })
 .catch(error => {console.log(error)})
 
+
+// const pass = passwordGenerator();
+// console.log(pass);
+// console.log(SHA256(pass).toString());
 
 
 
