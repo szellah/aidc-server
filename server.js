@@ -8,6 +8,11 @@ api.use(express.json());
 api.use(express.urlencoded({ extended: false }));
 
 
+api.post('/login', (req, res) => {
+	Sres_lib.login(globalPool, res, req.body);
+});
+
+
 api.post('/test', (req, res) => {
 	Sres_lib.test(globalPool, res, req.body);
 });

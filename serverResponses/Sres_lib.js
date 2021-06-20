@@ -31,6 +31,8 @@ const { Sres_getBuildings } = require("./Sres_getBuildings");
 const { Sres_getFloors } = require("./Sres_getFloors");
 const { Sres_getRooms } = require("./Sres_getRooms");
 
+const { Sres_login } = require('./Sres_login');
+
 
 
 
@@ -62,6 +64,8 @@ module.exports = {
   getArticleCategories: Sres_getArticleCategories,
   getBuildings: Sres_getBuildings,
   getFloors: Sres_getFloors,
-  getRooms: Sres_getRooms
+  getRooms: Sres_getRooms,
+
+  login: Sres_login
 
 };
