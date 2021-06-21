@@ -1,3 +1,16 @@
+
+/**
+ * Usuwanie użytkownika<br>
+ * odsyła poprzez HTTP informacje o tym czy udało się usunąć danego 
+ * użytkownika
+ * @function 
+ * @param {object} pool Połączenie do bazy danych
+ * @param {function} res Funkcja zwracająca informacje poprzez HTTP POST
+ * @param {number} UserId Id użytkownika usuwającego innego użytkownika, zapisane zostanie jako wpis w historii
+ * @param {number} UserToDelete Id usuwanego użytkownika
+ *  
+ * @category Sres
+ */
 function Sres_deleteUser(pool, res, params) {
     const { ServerResponse } = require("./ServerResponse");
     const contentCreator = Sres_promise(pool, params);
