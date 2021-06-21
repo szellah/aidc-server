@@ -1,10 +1,13 @@
 /**
+ * Usuwanie Lokalizacji<br>
  * Funkcja odpowiedzialna za usunięcie nowej lokacji<br>
  * Po jej użyciu do aplikacji zostanie odesłany wynik tej funkcji do ServerResponse<br>
  * @function Sres_deleteLocation
  * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
  * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
- * @param {object} params - Zbiór parametrów
+ * @param {number} AccountId  Id użytkownika usuwającego lokalizacje, następnie zostaje dodany do historii
+ * @param {number} locationId -  Id lokalizacji która zostanie usunięta
+ * 
  */
 function Sres_deleteLocation(pool, res, params) {
 	const { ServerResponse } = require('./ServerResponse');
