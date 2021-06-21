@@ -3,11 +3,13 @@
 //res function - funkcja odsyłająca pakiety danych do klienta
 //params object - zbiór parametrów w postaci obiektu
 /**
+ * Odtowarowanie artykułu<br>
  * Funckja Sres która pobiera specjalnie stworzony Sres_Promise i odsyła jego wynik.
  * @function Sres_dislocateArticle
  * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
  * @param {function} res Funkcja odsyłająca pakiety danych do klienta
- * @param {object} params Zbiór parametrów w postaci obiektu
+ * @param {number} ArticleId Id odtwowarowanego towaru, następnie zostaje dodany do historii
+ * @param {number} AccountId Id użytkownika oddtowarujacego towar, następnie zostaje dodany do historii
  */
 function Sres_dislocateArticle(pool, res, params) {
     //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych
@@ -18,13 +20,6 @@ function Sres_dislocateArticle(pool, res, params) {
     ServerResponse(contentCreator, res);
 }
 
-/**
- * Pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
- * @function Sres_promise
- * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
-
- * @returns 
- */
 
 function Sres_promise(pool, { ArticleId, AccountId }) {
     return new Promise((resolve, reject) => {
