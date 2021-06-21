@@ -28,22 +28,39 @@ function Sres_promise(
 		const { query } = require('mysql');
 
 		pool.query(
-			`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, ${building}, ${floor}, ${room})`,
+			`SELECT * FROM \`locations\` WHERE \`Building\` = ${building} AND \`Floor\` = ${floor} AND \`Room\` =  ${room}`,
 			(error, results, fields) => {
 				if (error) {
 					reject(error.message);
 				} else {
-					const locationId = results.insertId;
-					pool.query(
-						`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES ( NULL, 5, NOW(), ${locationId}, ${AccountId})`,
-						(error, results, fields) => {
-							if (error) {
-								reject(error.message);
-							} else {
-								resolve(`Dodano lokalizację ${building}/ ${room} `);
+					if(results.length == 0)
+					{
+						pool.query(
+							`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, ${building}, ${floor}, ${room})`,
+							(error, results, fields) => {
+								if (error) {
+									reject(error.message);
+								} else {
+									const locationId = results.insertId;
+									pool.query(
+										`INSERT INTO \`history\` (Action, Time, FirstId, SecondId) VALUES ( 5, NOW(), ${locationId}, ${AccountId})`,
+										(error, results, fields) => {
+											if (error) {
+												reject(error.message);
+											} else {
+												resolve(`Dodano lokalizację ${building}/ ${floor} /${room} `);
+											}
+										}
+									);
+								}
 							}
-						}
-					);
+						);
+					}
+					else
+					{
+						error = {message: "Ta lokalizacja już istnieje", text: "Ta lokalizacja już istnieje"};
+						reject(error.message);
+					}	
 				}
 			}
 		);

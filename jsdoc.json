@@ -1,16 +1,17 @@
 {
     "source": {
-      "include": ["./serverResponses"],
-      "includePattern": "Location.js",
+      "include": ["serverResponses"],
+       "includePattern": ".js$",
       "excludePattern": "(node_modules/|docs)"
     },
     "plugins": ["plugins/markdown"],
     "templates": {
-        "cleverLinks": true,
-        "monospaceLinks": true
+      "cleverLinks": true,
+      "monospaceLinks": true
     },
     "opts": {
-        "recurse": "true",
-        "destination": "./docs/"
+      "recurse": true,
+      "destination": "./docs/",
+        "templete": "./custom"
     }
 }
