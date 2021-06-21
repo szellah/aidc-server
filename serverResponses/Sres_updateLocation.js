@@ -10,23 +10,26 @@ function Sres_promise(
 	pool,
 	{ Location,  AccountId }
 ) {
-	const {locationId, building, floor, room} = Location;
+	const {LocationId, Building, Floor, Room} = Location;
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');
-
+		if ((!LocationId) || (!Building) ||(!Floor) ||(!Room) ) {
+            let err = {message: "Podano niepoprawne wartosci podczas edycji"};
+            return reject(err);
+        }
 		pool.query(
-			`UPDATE \`locations\` SET \`Building\`=${building},\`Floor\`=${floor},\`Room\`=${room} WHERE LocationId = ${locationId}`,
+			`UPDATE \`locations\` SET \`Building\`=${Building},\`Floor\`=${Floor},\`Room\`=${Room} WHERE LocationId = ${LocationId}`,
 			(error, results, fields) => {
 				if (error) {
 					reject(error.message);
 				} else {
 					pool.query(
-						`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES ( NULL, 7, NOW(), ${locationId}, ${AccountId})`,
+						`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES ( NULL, 7, NOW(), ${LocationId}, ${AccountId})`,
 					(error, results, fields) => {
 						if (error) {
 							reject(error.message);
 						} else {
-							resolve(`Zmieniono dane lokalizacji ${building}/${room} `);
+							resolve(`Zmieniono dane lokalizacji ${Building}/ ${Floor} /${Room} `);
 						}
 					}
 					);

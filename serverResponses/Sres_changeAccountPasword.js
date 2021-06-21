@@ -21,7 +21,7 @@ function Sres_promise(pool, { userId, password }) {
 		const { query } = require('mysql');
 
         pool.query(
-			`UPDATE accounts SET Password="${SHA256(password)}" WHERE AccountId = ${userId}`,
+			`UPDATE accounts SET Password="${password}" WHERE AccountId = ${userId}`,
 			(error, results, fields) => {
 				if (error) {
 					reject(error.message);

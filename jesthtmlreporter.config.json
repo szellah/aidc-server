@@ -1,0 +1,5 @@
+{
+	"pageTitle": "AIDC-server testy",
+	"outputPath": "tests/index.html",
+	"includeFailureMsg": true
+}

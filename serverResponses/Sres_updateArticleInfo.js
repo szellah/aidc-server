@@ -14,7 +14,7 @@ function Sres_updateArticleInfo(pool, res, params) {
 //pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
 function Sres_promise(
     pool,
-    { UserId, article: { ArticleId, Name, category, location, description } }
+    { UserId, article: { ArticleId, Name, Category, LocationId, Description } }
 ) {
     return new Promise((resolve, reject) => {
         //pobranie funkcji query z mysql
@@ -25,11 +25,18 @@ function Sres_promise(
             .slice(0, 19)
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
+        if ((!ArticleId) || (!Name || isEmpty(Name)) || (!Category || isEmpty(Category)) || (!LocationId) || (!Description || isEmpty(Description))) {
+            let err = {message: "Podano niepoprawne wartosci podczas edycji"};
+            return reject(err);
+        }
         pool.query(
-            `UPDATE articles SET LocationId = '${location}', Category = '${category}', Name = '${Name}', Description = '${description}' WHERE ArticleId = ${ArticleId}`,
-            (error) => {
+            `UPDATE articles SET LocationId = '${LocationId}', Category = '${Category}', Name = '${Name}', Description = '${Description}' WHERE ArticleId = ${ArticleId}`,
+            (error, results) => {
                 //prosty handling błędu
-                if (error) reject(error);
+                if (error)
+                {   error.message="Podano niepoprawne wartosci podczas edycji";
+                    reject(error);
+                }
                 // jeżeli nigdzie nie pojawił się błąd to wpis do historii
                 else {
                     pool.query(
@@ -45,6 +52,12 @@ function Sres_promise(
         );
     });
 }
+
+
+function isEmpty(str) {
+    return str.replace(/^\s+|\s+$/gm,'').length == 0;
+}
+
 
 module.exports = {
     Sres_updateArticleInfo,

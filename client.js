@@ -1,32 +1,39 @@
 const axios = require("axios");
+const SHA256 = require('crypto-js/sha256');
+const {passwordGenerator} = require('./handlers/passwordGenerator');
 
 const queryParams = {
-
-
-    article: {
-        ArticleId: 312,
-        Name: "testUpdate2",
-        category: "testUpdate2",
-        location: 4,
-        description: "testUpdateOpis",
-    },
-
-    ArticleId: 314,
-    LocationId: 12,
-    AccountId: 1,
+    UserToDelete: 1,
     UserId: 1,
-
 };
 
+// axios.post('http://192.168.1.80:8080/test', queryParams)
+// .then(res => {
+//     console.log(res.data)
+// })
+// .catch(error => {
+//     console.error(error)
+// })
+
+// axios.post('http://192.168.0.4:8080/getNameInfo', queryParams)
+// .then(res => {
+//     console.log(res.data)
+// })
+// .catch(error => {
+//     console.error(error)
+// })
+
+// axios.post('http://192.168.0.4:8080/login', queryParams)
+// .then(res => {
+//     console.log(res.data)
+// })
+// .catch(error => {console.log(error)})
+
 axios
-    .post("http://localhost:8080/dislocateArticle", queryParams)
+    .post("http://localhost:8080/deleteUser", queryParams)
     .then((res) => {
         console.log(res.data);
     })
     .catch((error) => {
-        console.error(error);
+        console.log(error);
     });
-
-
-
-
