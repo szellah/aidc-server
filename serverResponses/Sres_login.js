@@ -1,14 +1,26 @@
 const config = require("../config");
 const jwt = require("jsonwebtoken");
 
-
+/**
+ * Funkcja odpowiedzialna za logowania się do aplikacji i wytworzenie tokena użytkownika
+ * Po jej użyciu do aplikacji zostanie odesłany wynik tej funkcji do ServerResponse<br>
+ * @function Sres_login
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
+ * @param {object} params - Zbiór parametrów
+ */
 function Sres_login(pool, res, params) {
     const {ServerResponse} = require("./ServerResponse");
     const contentCreator = Sres_promise(pool, params);
     ServerResponse(contentCreator, res);
 }
 
-
+/**
+ * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
+ * @function Sres_promise
+ * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
+ * @param {object} params - Rozbity argument params na Username i Password
+ */
 
 function Sres_promise(pool, {username, password}) {
     return new Promise((resolve, reject) => {

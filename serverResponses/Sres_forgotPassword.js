@@ -1,5 +1,12 @@
 const { ConsoleWriter } = require('istanbul-lib-report');
-
+/**
+ * Funkcja odpowiedzialna za wysłanie nowego hasła na skrzynke mailową danego użytkownika.
+ * Po jej użyciu do aplikacji zostanie odesłany wynik tej funkcji do ServerResponse<br>
+ * @function Sres_forgotPassword
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
+ * @param {object} params - Zbiór parametrów
+ */
 function Sres_forgotPassword(pool, res, params){
 
     const { ServerResponse } = require('./ServerResponse');
@@ -8,12 +15,14 @@ function Sres_forgotPassword(pool, res, params){
 
     ServerResponse(contentCreator, res);
 }
-
+/**
+ * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
+ * @function Sres_promise
+ * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
+ * @param {object} params - Rozbity argument params na Login
+ */
 function Sres_promise(pool, {Login}){
 return new Promise((resolve, reject) => {
-
-
-
 
 pool.query(`SELECT AccountId, Name, Surname, Login, Email, Rank, State FROM accounts WHERE Login = "${Login}"`, (error, results, fields) => {
     

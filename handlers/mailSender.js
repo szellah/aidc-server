@@ -8,7 +8,13 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-
+/**
+ * Wysłanie wiadomości na podanego maila
+ * @constant
+ * @param {object} email - Email, na który ma zostać wysłana wiadomość
+ * @param {object} subject - Temat maila
+ * @param {object} text - Zawartość maila
+ */
 const mailSender = (email, subject, text) => {
     return new Promise((resolve, reject) => {
          transporter.sendMail(

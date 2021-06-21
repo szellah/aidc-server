@@ -1,3 +1,11 @@
+/**
+ * Funkcja odpowiedzialna za zwracanie raportu na podstawie zmiennej ReportChoice
+ * Po jej użyciu do aplikacji zostanie odesłany wynik tej funkcji do ServerResponse<br>
+ * @function Sres_getArticleReport
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
+ * @param {object} params - Zbiór parametrów
+ */
 function Sres_getArticleReport(pool, res, params) {
 	const { ServerResponse } = require('./ServerResponse');
 
@@ -5,7 +13,14 @@ function Sres_getArticleReport(pool, res, params) {
 
 	ServerResponse(contentCreator, res);
 }
-
+/**
+ * Tworzenie raportu dla wybranego budynku
+ * @constant
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {object} building - Budynek dla którego ma zostać stworzony raport
+ * @param {object} resolve - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy nie ma błedu
+ * @param {object} reject - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy istnieje błąd
+ */
 const BuildingReport = (pool,building, resolve , reject) => {
     const { query } = require('mysql');
     pool.query(
@@ -30,7 +45,15 @@ const BuildingReport = (pool,building, resolve , reject) => {
         }
     );
 }
-
+/**
+ * Tworzenie raportu z danego piętra
+ * @constant
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {object} building - Wybrany budynek
+ * @param {object} floor - Piętro, dla którego ma zostać wygenerowany raport
+ * @param {object} resolve - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy nie ma błedu
+ * @param {object} reject - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy istnieje błąd
+ */
 const FloorReport = (pool,building, floor, resolve , reject) => {
     const { query } = require('mysql');
     pool.query(
@@ -55,7 +78,16 @@ const FloorReport = (pool,building, floor, resolve , reject) => {
         }
     );
 }
-
+/**
+ * Tworzenie raportu z danego pokoju w wybranym budynku
+ * @constant
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {object} building - Wybrany budynek
+ * @param {object} floor -Wybrane piętro
+ * @param {object} room - Pokój dla którego ma zostać stworzony raport
+ * @param {object} resolve - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy nie ma błedu
+ * @param {object} reject - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy istnieje błąd
+ */
 const RoomReport = (pool,building, floor, room, resolve , reject) => {
     const { query } = require('mysql');
     console.log("RoomReport");
@@ -80,7 +112,14 @@ const RoomReport = (pool,building, floor, room, resolve , reject) => {
         }
     );
 }
-
+/**
+ * Tworzenie raportu z kategori artykułów
+ * @constant
+ * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
+ * @param {object} category - Kategoria dla której ma zostać stworzony raport
+ * @param {object} resolve - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy nie ma błedu
+ * @param {object} reject - Funkcja Callback, który poprawnie rozwiązuje Promise w przypadku kiedy istnieje błąd
+ */
 const CategoryReport = (pool, category, resolve , reject) => {
     const { query } = require('mysql');
     pool.query(
@@ -106,7 +145,12 @@ const CategoryReport = (pool, category, resolve , reject) => {
     );
 }
 
-
+/**
+ * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
+ * @function Sres_promise
+ * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
+ * @param {object} params - Rozbity argument params na reportChoice, building, floor, room i category
+ */
 function Sres_promise(pool, {reportChoice, building, floor, room, category}) {
 	return new Promise((resolve, reject) => {
         switch(reportChoice){
