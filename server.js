@@ -8,6 +8,19 @@ api.use(express.json());
 api.use(express.urlencoded({ extended: false }));
 
 
+api.post('/login', (req, res) => {
+	Sres_lib.login(globalPool, res, req.body);
+});
+
+api.post('/resetPassword', (req, res) => {
+	Sres_lib.resetPassword(globalPool, res, req.body);
+});
+
+api.post('/forgotPassword', (req, res) => {
+	Sres_lib.forgotPassword(globalPool, res, req.body);
+});
+
+
 api.post('/test', (req, res) => {
 	Sres_lib.test(globalPool, res, req.body);
 });
@@ -19,9 +32,13 @@ api.post('/getAccountInfo', (req, res) => {
 });
 
 api.post('/getAccountReport', (req, res) => {
-	Sres_lib.getAccountReport(globalPool, res, req.body);
+	Sres_lib.getAccountReport(globalPool, res);
 });
 
+
+api.post('/getArticleReport', (req, res) => {
+	Sres_lib.getArticleReport(globalPool, res, req.body);
+});
 
 
 api.post('/getLocationInfo', (req, res) => {
@@ -32,7 +49,7 @@ api.post('/addNewLocation', (req, res) => {
 	Sres_lib.addNewLocation(globalPool, res, req.body);
 });
 
-api.post('/updateLocation', (req, res) => {
+api.post('/updateLocationInfo', (req, res) => {
 	Sres_lib.updateLocation(globalPool, res, req.body);
 });
 
@@ -51,7 +68,7 @@ api.post('/deleteUser', (req,res) => {
 	Sres_lib.deleteUser(globalPool, res, req.body);
 });
 
-api.post('/updateUser', (req,res) => {
+api.post('/updateUserInfo', (req,res) => {
 	Sres_lib.updateUser(globalPool, res, req.body);
 });
   
@@ -64,7 +81,7 @@ api.post('/test', (req, res) => {
 
 
   
-api.post('/changeAccountPasword', (req, res) => {
+api.post('/changeAccountPassword', (req, res) => {
 	Sres_lib.changeAccountPasword(globalPool, res, req.body);
 });
   
@@ -99,11 +116,28 @@ api.post("/dislocateArticle", (req, res) => {
     Sres_lib.dislocateArticle(globalPool, res, req.body);
 });
 
+
+
+
+api.post("/getArticleCategories", (req, res) => {
+    Sres_lib.getArticleCategories(globalPool, res);
+});
+
+api.post("/getBuildings", (req, res) => {
+    Sres_lib.getBuildings(globalPool, res);
+});
   
+api.post("/getFloors", (req, res) => {
+    Sres_lib.getFloors(globalPool, res, req.body);
+});
   
+api.post("/getRooms", (req, res) => {
+    Sres_lib.getRooms(globalPool, res, req.body);
+});
+  
+
 
 api.listen(port, () => {
 
-    console.log("express start");
+    console.log("AIDC-SERVER WULS IO gr.4");
 });
-
