@@ -1,6 +1,8 @@
 /**
  * Funkcja odpowiedzialna za wygenerowanie nowego hasła, między innymi, kiedy trzeba stworzyć hasło dla nowego użytkownika
  * @function passwordGenerator
+ * 
+ * @category handlers
  */
 function passwordGenerator(){
     let password = [];

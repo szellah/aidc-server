@@ -8,6 +8,8 @@
  * @param {number} AccountId  Id użytkownika usuwającego lokalizacje, następnie zostaje dodany do historii
  * @param {number} locationId -  Id lokalizacji która zostanie usunięta
  * 
+ * @category Sres
+ * 
  */
 function Sres_deleteLocation(pool, res, params) {
 	const { ServerResponse } = require('./ServerResponse');
@@ -17,12 +19,7 @@ function Sres_deleteLocation(pool, res, params) {
 	ServerResponse(contentCreator, res);
 }
 
-/**
- * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
- * @function Sres_promise
- * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
- * @param {object} params - Rozbity argument params na locationId i AccountID
- */
+
 function Sres_promise(pool, { locationId, AccountId }) {
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');

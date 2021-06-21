@@ -11,6 +11,8 @@
  * @param {string} category  Kategoria dodawanego towaru
  * @param {number} location  Id lokalizacji dodawanego towaru
  * @param {string} description  Opis dodawanego towaru
+ * 
+ * @category Sres
  */
 
 function Sres_addNewArticle(pool, res, params) {

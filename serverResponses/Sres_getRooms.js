@@ -3,8 +3,10 @@
  * @function Sres_getRooms
  * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
  * @param {function} res Funkcja odsyłająca pakiety danych do klienta.
- * @param {object} params Zbiór parametrów w postaci obiektu.
+ * @param {object} params Zbiór parametrów w postaci obiektu {building, floor}.
  * @property {object} ServerResponse Pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych
+ * 
+ * @category Sres
  */
 function Sres_getRooms(pool, res, params){
 
@@ -14,12 +16,7 @@ function Sres_getRooms(pool, res, params){
 
     ServerResponse(contentCreator, res);
 }
-/**
- * Pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
- * @function Sres_promise 
- * @param {*} pool  Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
- * @returns 
- */
+
 function Sres_promise(pool, {building, floor}){
 return new Promise((resolve, reject) => {
 

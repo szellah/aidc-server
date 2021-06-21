@@ -10,10 +10,12 @@ let transporter = nodemailer.createTransport({
 
 /**
  * Wysłanie wiadomości na podanego maila
- * @constant
- * @param {object} email - Email, na który ma zostać wysłana wiadomość
- * @param {object} subject - Temat maila
- * @param {object} text - Zawartość maila
+ * @function
+ * @param {string} email - Email, na który ma zostać wysłana wiadomość
+ * @param {strnig} subject - Temat maila
+ * @param {string} text - Zawartość maila
+ * 
+ * @category handlers
  */
 const mailSender = (email, subject, text) => {
     return new Promise((resolve, reject) => {

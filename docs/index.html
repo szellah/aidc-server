@@ -1,25 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Home</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Home</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Server AIDC</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#BuildingReport">BuildingReport</a></li><li><a href="global.html#CategoryReport">CategoryReport</a></li><li><a href="global.html#FloorReport">FloorReport</a></li><li><a href="global.html#RoomReport">RoomReport</a></li><li><a href="global.html#Sres_promise">Sres_promise</a></li></ul></div><div class="category"><h2>Sres</h2><h3>Global</h3><ul><li><a href="global.html#Sres_addNewArticle">Sres_addNewArticle</a></li><li><a href="global.html#Sres_addNewLocation">Sres_addNewLocation</a></li><li><a href="global.html#Sres_addNewUser">Sres_addNewUser</a></li><li><a href="global.html#Sres_allocateArticle">Sres_allocateArticle</a></li><li><a href="global.html#Sres_changeAccountPasword">Sres_changeAccountPasword</a></li><li><a href="global.html#Sres_deleteArticle">Sres_deleteArticle</a></li><li><a href="global.html#Sres_deleteLocation">Sres_deleteLocation</a></li><li><a href="global.html#Sres_deleteUser">Sres_deleteUser</a></li><li><a href="global.html#Sres_dislocateArticle">Sres_dislocateArticle</a></li><li><a href="global.html#Sres_forgotPassword">Sres_forgotPassword</a></li><li><a href="global.html#Sres_getAccountInfo">Sres_getAccountInfo</a></li><li><a href="global.html#Sres_getAccountReport">Sres_getAccountReport</a></li><li><a href="global.html#Sres_getArticleCategorie">Sres_getArticleCategorie</a></li><li><a href="global.html#Sres_getArticleInfo">Sres_getArticleInfo</a></li><li><a href="global.html#Sres_getArticleReport">Sres_getArticleReport</a></li><li><a href="global.html#Sres_getBuildings">Sres_getBuildings</a></li><li><a href="global.html#Sres_getFloors">Sres_getFloors</a></li><li><a href="global.html#Sres_getLocationInfo">Sres_getLocationInfo</a></li><li><a href="global.html#Sres_getRooms">Sres_getRooms</a></li><li><a href="global.html#Sres_login">Sres_login</a></li><li><a href="global.html#Sres_resetPassword">Sres_resetPassword</a></li><li><a href="global.html#Sres_updateArticleInfo">Sres_updateArticleInfo</a></li><li><a href="global.html#Sres_updateLocation">Sres_updateLocation</a></li><li><a href="global.html#Sres_updateUser">Sres_updateUser</a></li></ul></div><div class="category"><h2>handlers</h2><h3>Global</h3><ul><li><a href="global.html#mailSender">mailSender</a></li><li><a href="global.html#passwordGenerator">passwordGenerator</a></li><li><a href="global.html#ServerResponse">ServerResponse</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
 
 
 
@@ -42,24 +103,193 @@
 
 
 
+    <section>
+        <article><h1>AIDC-SERVER</h1>
+<p>by SGGW WZIM Inf. 2019/gr.4
+</br></p>
+<blockquote>
+<p>Sprawdź również <a href="https://github.com/szellah/aidc-client">AIDC-CLIENT</a></p>
+</blockquote>
+<p></br></br></p>
+<h1>Spis treści</h1>
+<ul>
+<li><a href="#spos%C3%B3b-dzia%C5%82ania">Sposób działania</a></li>
+<li><a href="#nazewnictwo">Nazewnictwo</a></li>
+<li><a href="#potrzebne-oprogramowanie">Potrzebne oprogramowanie</a></li>
+<li><a href="#instalacja">Instalacja</a>
+<ul>
+<li><a href="#nodejs">Node.js</a></li>
+<li><a href="#expressjs">Express.js</a></li>
+<li><a href="#axiosjs">axios.js</a></li>
+<li><a href="#mysqljs">mysql.js</a></li>
+<li><a href="#xampp">XAMPP</a></li>
+</ul>
+</li>
+<li><a href="#konfiguracja">Konfiguracja</a>
+<ul>
+<li><a href="#%C5%82%C4%85cznie-serverjs-z-serwerem-mysql">Łącznie Server.js z serwerem MySql</a></li>
+</ul>
+</li>
+<li><a href="#testowanie">Testowanie</a></li>
+<li><a href="#materia%C5%82y-pomocnicze">Materiały Pomocnicze</a>
+</br></br></br></li>
+</ul>
+<h1>Serwer API do aplikacji aidc</h1>
+<p>Jedno z dwóch głównych repozytoriów związanych z projektem AIDC (Automatic identification and data capture).
+To dokładne repozytorium zajmuje się częścią serwerową oprogramowania. Sam projekt programowany będzie w całości
+w JavaScript, głównie z powodów, jego popularności na rynku pracy, jak i szerokiej bazy bibliotek. Dodatkowo programowanie
+w tym samym języku po stronie klienckiej jak i serwerowej pozwala na przesyłanie tablic i obiektów.</p>
+<h1>Sposób działania</h1>
+<p>Plik server.js po uruchomieniu tworzy API przy pomocy frameworka Express.js.
+API nasłuchuje wybrany port, i reaguje przy pomocy odpowiednich odpowiedzi (server responses).
+Wszystkie funkcje-odpowiedzi znajdują się w folderze serverRsponses i są dopięte do pliku Sres_lib.js,
+który funkcjonuje jako biblioteka. Poszczególne funkcje wykonują odpowiednie akcje, aczkolwiek najczęstszym
+rodzajem pozostają funkcje wykonujące zapytania do serwera MySql. W głównym pliku Server.js tworzona jest
+pula połączeń, która zostaje przekazana do odpowiednich funkcji, te następnie wykorzystują funkcje query,
+by wykonać kwerendę do bazy danych.</p>
+<h1>Nazewnictwo</h1>
+<ul>
+<li>funkcje i pliki rozpoczynają się dużymi literami</li>
+<li>foldery zaś małymi</li>
+<li>wszystkie funkcje w folderze /serverResponses posiadają przedrostek 'Sres'</li>
+<li>funkcje to czasownik i czasem po nim rzeczownik, do którego odnosi się poprzedni</li>
+<li>jeżeli w pliku znajduje się jedna główna funkcja pomocnicza, to plik powinien nosić nazwę funkcji</li>
+<li>nazwy tabel sql to oczywiście rzeczowniki w liczbie mnogiej po angielsku, rozpoczynane dużą literą</li>
+<li>nazwy pól tabeli sql to rzeczowniki, lub połączenie paru rzeczowników, po angielsku rozpoczynane dużą literą, prowadzone z camelCase</li>
+</ul>
+<h1>Potrzebne oprogramowanie</h1>
+<p>Aktualna wersja aidc-server działa przy pomocy poniższych programów:</p>
+<ul>
+<li><strong>Node.js</strong></li>
+</ul>
+<blockquote>
+<p>kompiluje JavaScript na komputerze</p>
+</blockquote>
+<ul>
+<li><strong>Express.js</strong></li>
+</ul>
+<blockquote>
+<p>tworzy api serwera</p>
+</blockquote>
+<ul>
+<li><strong>axios.js</strong></li>
+</ul>
+<blockquote>
+<p>wysyła zapytania POST (głównie w celach testowych)</p>
+</blockquote>
+<ul>
+<li><strong>mysql.js</strong></li>
+</ul>
+<blockquote>
+<p>łączy serwer z bazą MySql</p>
+</blockquote>
+<ul>
+<li><strong>XAMPP</strong></li>
+</ul>
+<blockquote>
+<p>Xampp czyli cross-platform Apache, MySql, PHP and Perl to prosty serwer PHP, który posiada w sobie od razu
+serwer bazy danych MySql, z przyjemnym interfejsem graficznym.</p>
+</blockquote>
+<h1>Instalacja</h1>
+<p>Jeżeli posiadacie wszystkie powyższe programy już na komputerze nie ma czytania tej sekcji.</p>
+<blockquote>
+<p><strong>Uwaga</strong>: Przed instalacją niektórych programów, opłaca się pobrać repozytorium</p>
+</blockquote>
+<h3>Node.js</h3>
+<p>Wystarczy wejść pod ten <a href="https://nodejs.org/en/">link</a> i pobrać najnowszą, bądź najnowszą stabilną wersję. Następnie zainstalować,
+i komendą <code>node -v</code> sprawdzić czy pokazuję się wam odpowiednia wersja Node.js .</p>
+<h3>Express.js</h3>
+<p>Express jest biblioteką Node.js więc wymaga on wcześniejszego zainstalowania Node.
+Należy otworzyć terminal w folderze projektu ( w naszym przypadku folderze repozytorium ),
+a następnie wpisać
+</br></br>
+<code>npm install express --save</code>
+</br></br>
+Włączy to tak zwany
+Node Package Manager który automatycznie pobierze nam do danego folderu bibliotekę Express
+do folderu /node_modules</p>
+<h3>axios.js</h3>
+<p>Podobnie do Express.js axios również jest biblioteką Node.js, więc go, jak i inne
+&quot;moduły&quot; Node-a można łatwo instalować poprzez npm, o ile wcześniej zostały dodane na ich stronę.
+</br></br>
+<code>npm install axios --save</code>
+</br></br></p>
+<h3>mysql.js</h3>
+<p>mysql.js również jest modułem Node-a więc należy postępować podobnie jak z powyższymi.
+</br></br>
+<code>npm install mysql --save</code>
+</br></br></p>
+<h3>XAMPP</h3>
+<p>XAMPP można normalnie pobrać <a href="https://www.apachefriends.org/pl/index.html">tutaj</a>. Następnie wystarczy go
+zainstalować i jeżeli zapyta o pozwolenie mu działania w sieci, zezwolić.</p>
+<h1>Konfiguracja</h1>
+<p>Jeżeli wszystkie powyższe elementy zostały już zainstalowane, to nie pozostaje nam nic innego jak
+zaimportowanie aktualnej wersji naszej bazy danych do XAMPP. Plik Server.js automatycnie łączy się z bazą danych o ile została ona poprawnie skonfigurowana,
+jednakże gdyby pojawiły się w związku z tym błędy, wszystkie dane połączenia znajdują się w pliku MysqlPool.js w folderze mysqlClient. Podobnie z plikiem Client.js .
+</br></br></p>
+<h3>Łącznie Server.js z serwerem MySql</h3>
+<p>Należy wpierw uruchomić XAMPP, i włączyć funkcję Apache oraz MySql przyciskiem 'Start'.
+Następnie o ile te nazwy zmieniły kolor na jasną zieleń, wpisujemy w okno przeglądarki http://localhost/phpmyadmin/.
+Naciskając na przycisk 'Nowa' na lewym panelu bocznym otwieramy panel tworzenia bazy danych. Wpisujemy nazwę 'aidc_db' i upewniamy się że kodowanie jest ustawione na 'utf8mb4-general-ci' i naciskamy 'Utwórz'.
+Następnie wchodzimy w zakładkę 'Import', naciskamy przycisk wybierz i wybieramy plik aidc_db.sql.
+Potem należy upewnić się że typ importu jest ustawiony na plik SQL, oraz że kodowanie jest ustawione na utf-8, po czym nacisnąć 'Wykonaj'.
+Klikając na bazę danych na lewym panelu można sprawdzić czy tabele dodały się poprawnie. Oczywiście jeżeli wystąpi błąd, Baza wam go najprawdopodobniej pokaże.</p>
+<h1>Testowanie</h1>
+<blockquote>
+<p><strong>Uwaga:</strong> Przed uruchomieniem proszę się upewnić że posiadamy odpowiednie oprogramowanie oraz z konfigurowaliśmy bazę danych.</p>
+</blockquote>
+<p>Włączamy serwer MySql przy pomocy panelu XAMPP.
+Następnie by uruchomić plik Server.js należy w konsoli umiejscowionej w folderze projektu wpisać
+</br></br>
+<code>node Server</code>
+</br></br></p>
+<p>A by włączyć plik Client.js należy w innym oknie konsoli
+</br></br>
+<code>node Client</code>
+</br></br></p>
+<p>żeby wyłączyć którykolwiek z procesów można go anulować przy pomocy kombinacji przycisków CTRL+C
+</br></br>
+Alternatywnie istnieje również prosty formularz html, o nazwie Index.html, który również znajduje się w repozytorium.
+Można również korzystać z innych oprogramowań, które obsługują zapytania POST.</p>
+<h1>Materiały Pomocnicze</h1>
+<p>Jeżeli w czymkolwiek pojawi się problem odsyłam do odpowiednich dokumentacji i kompendiów wiedzy:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/pl/docs/Web/JavaScript">JavaScript by MDN</a></li>
+<li><a href="https://www.w3schools.com/js/DEFAULT.asp">JavaScript by W3schools</a></li>
+<li><a href="https://nodejs.org/dist/latest-v15.x/docs/api/">Node.js</a></li>
+<li><a href="https://expressjs.com">Express.js</a></li>
+<li><a href="https://github.com/axios/axios#axios">Axios.js on Githubie</a></li>
+<li><a href="https://www.npmjs.com/package/mysql">mysql.js</a></li>
+<li><a href="https://www.w3schools.com/sql/default.asp">MySql by W3schools</a>
+</br></br>
+Polecam również sprawdzić ten kanał na <a href="https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg">YouTube</a></li>
+</ul></article>
+    </section>
 
 
 
 
 
-</div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Sres_addNewLocation">Sres_addNewLocation</a></li><li><a href="global.html#Sres_deleteLocation">Sres_deleteLocation</a></li><li><a href="global.html#Sres_promise">Sres_promise</a></li><li><a href="global.html#Sres_updateLocation">Sres_updateLocation</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jun 10 2021 23:28:22 GMT+0200 (czas środkowoeuropejski letni)
-</footer>
-
-<script> prettyPrint(); </script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
 </body>
 </html>

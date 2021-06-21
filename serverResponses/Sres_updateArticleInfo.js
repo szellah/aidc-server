@@ -14,6 +14,8 @@
  * @param {string} category  Kategoria edytowanego towaru
  * @param {number} location  Id lokalizacji edytowanego towaru
  * @param {string} description  Opis edytowanego towaru
+ * 
+ * @category Sres
  */
 function Sres_updateArticleInfo(pool, res, params) {
     //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych

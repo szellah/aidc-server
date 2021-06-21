@@ -13,6 +13,8 @@ let SHA256 = require("crypto-js/sha256");
  * @param {res} function -funkcja odsyłająca pakiety danych do klienta.
  * @param {string} password - Zaszyfrowane nowe hasło użytkownika
  * @param {string} userId - Id użytkownika którego hasła zostanie zmienione
+ * 
+ * @category Sres
  *
  */
 function Sres_changeAccountPasword(pool, res, params) {

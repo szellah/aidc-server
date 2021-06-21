@@ -5,6 +5,8 @@
  * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
  * @param {function} res Funkcja odsyłająca pakiety danych do klienta
  * @param {number} articleId Id Artykułu którego informacje mają zostać odesłane
+ * 
+ * @category Sres
  */
  function Sres_getArticleInfo(pool, res, params){
 

@@ -10,6 +10,8 @@
  * @param {function} res Funkcja odsyłająca pakiety danych do klienta
  * @param {number} ArticleId Id dotowarowanego towaru, następnie zostaje dodany do historii
  * @param {number} LocationId  Id lokalizacji dotowarowania
+ * 
+ * @category Sres
  */
 function Sres_allocateArticle(pool, res, params) {
     //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych

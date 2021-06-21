@@ -7,7 +7,9 @@ const jwt = require("jsonwebtoken");
  * @function Sres_login
  * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
  * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
- * @param {object} params - Zbiór parametrów
+ * @param {object} params - Zbiór parametrów Username i Password
+ * 
+ * @category Sres
  */
 function Sres_login(pool, res, params) {
     const {ServerResponse} = require("./ServerResponse");
@@ -15,12 +17,7 @@ function Sres_login(pool, res, params) {
     ServerResponse(contentCreator, res);
 }
 
-/**
- * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
- * @function Sres_promise
- * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
- * @param {object} params - Rozbity argument params na Username i Password
- */
+
 
 function Sres_promise(pool, {username, password}) {
     return new Promise((resolve, reject) => {

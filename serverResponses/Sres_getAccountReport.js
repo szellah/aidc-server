@@ -1,3 +1,13 @@
+/**
+ * Funkcja odpowiedzialna za zwracanie tabelo użytkowników
+ * Po jej użyciu do aplikacji zostanie odesłany wynik tej funkcji do ServerResponse<br>
+ * @function Sres_getAccountReport
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
+ * @param {object} params - Zbiór parametrów
+ * 
+ * @category Sres
+ */
 function Sres_getAccountReport(pool, res, params) {
 	const { ServerResponse } = require('./ServerResponse');
 

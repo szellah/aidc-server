@@ -27,12 +27,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
+ * Dodanie nowej lokalizacji&lt;br>
  * Funkcja odpowiedzialna za dodanie nowej lokacji&lt;br>
  * Po jej użyciu do aplikacji zostanie odesłany wynik tej funkcji do ServerResponse&lt;br>
  * @function Sres_addNewLocation
  * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
  * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
- * @param {object} params - Zbiór parametrów
+ * @param {number} building - numer budynku w którym znajduje się lokalizacja
+ * @param {number} floor - numer piętra w danym budynku na którym znajduje się lokalizacja
+ * @param {number} room - numer pokoju na danym pietrze w danym budynku w którym znajduje się lokalizacja
+ * 
  */
 function Sres_addNewLocation(pool, res, params) {
 		const { ServerResponse } = require('./ServerResponse');
@@ -42,12 +46,7 @@ function Sres_addNewLocation(pool, res, params) {
 		ServerResponse(contentCreator, res);
 }
 
-/**
- * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
- * @function Sres_promise
- * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
- * @param {object} params - Rozbity argument params na Location i AccountID
- */
+
 function Sres_promise(
 	pool,
 	{ Location, AccountId }
@@ -57,22 +56,39 @@ function Sres_promise(
 		const { query } = require('mysql');
 
 		pool.query(
-			`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, ${building}, ${floor}, ${room})`,
+			`SELECT * FROM \`locations\` WHERE \`Building\` = ${building} AND \`Floor\` = ${floor} AND \`Room\` =  ${room}`,
 			(error, results, fields) => {
 				if (error) {
 					reject(error.message);
 				} else {
-					const locationId = results.insertId;
-					pool.query(
-						`INSERT INTO \`history\`(\`HistoryId\`, \`Action\`, \`Time\`, \`FirstId\`, \`SecondId\`) VALUES ( NULL, 5, NOW(), ${locationId}, ${AccountId})`,
-						(error, results, fields) => {
-							if (error) {
-								reject(error.message);
-							} else {
-								resolve(`Dodano lokalizację ${building}/ ${room} `);
+					if(results.length == 0)
+					{
+						pool.query(
+							`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, ${building}, ${floor}, ${room})`,
+							(error, results, fields) => {
+								if (error) {
+									reject(error.message);
+								} else {
+									const locationId = results.insertId;
+									pool.query(
+										`INSERT INTO \`history\` (Action, Time, FirstId, SecondId) VALUES ( 5, NOW(), ${locationId}, ${AccountId})`,
+										(error, results, fields) => {
+											if (error) {
+												reject(error.message);
+											} else {
+												resolve(`Dodano lokalizację ${building}/ ${floor} /${room} `);
+											}
+										}
+									);
+								}
 							}
-						}
-					);
+						);
+					}
+					else
+					{
+						error = {message: "Ta lokalizacja już istnieje", text: "Ta lokalizacja już istnieje"};
+						reject(error.message);
+					}	
 				}
 			}
 		);
@@ -94,13 +110,13 @@ module.exports = {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Sres_addNewLocation">Sres_addNewLocation</a></li><li><a href="global.html#Sres_deleteLocation">Sres_deleteLocation</a></li><li><a href="global.html#Sres_promise">Sres_promise</a></li><li><a href="global.html#Sres_updateLocation">Sres_updateLocation</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BuildingReport">BuildingReport</a></li><li><a href="global.html#CategoryReport">CategoryReport</a></li><li><a href="global.html#FloorReport">FloorReport</a></li><li><a href="global.html#RoomReport">RoomReport</a></li><li><a href="global.html#ServerResponse">ServerResponse</a></li><li><a href="global.html#Sres_addNewArticle">Sres_addNewArticle</a></li><li><a href="global.html#Sres_addNewLocation">Sres_addNewLocation</a></li><li><a href="global.html#Sres_addNewUser">Sres_addNewUser</a></li><li><a href="global.html#Sres_allocateArticle">Sres_allocateArticle</a></li><li><a href="global.html#Sres_changeAccountPasword">Sres_changeAccountPasword</a></li><li><a href="global.html#Sres_deleteArticle">Sres_deleteArticle</a></li><li><a href="global.html#Sres_deleteLocation">Sres_deleteLocation</a></li><li><a href="global.html#Sres_deleteUser">Sres_deleteUser</a></li><li><a href="global.html#Sres_dislocateArticle">Sres_dislocateArticle</a></li><li><a href="global.html#Sres_forgotPassword">Sres_forgotPassword</a></li><li><a href="global.html#Sres_getAccountInfo">Sres_getAccountInfo</a></li><li><a href="global.html#Sres_getArticleCategorie">Sres_getArticleCategorie</a></li><li><a href="global.html#Sres_getArticleInfo">Sres_getArticleInfo</a></li><li><a href="global.html#Sres_getArticleReport">Sres_getArticleReport</a></li><li><a href="global.html#Sres_getBuildings">Sres_getBuildings</a></li><li><a href="global.html#Sres_getFloors">Sres_getFloors</a></li><li><a href="global.html#Sres_getLocationInfo">Sres_getLocationInfo</a></li><li><a href="global.html#Sres_getRooms">Sres_getRooms</a></li><li><a href="global.html#Sres_login">Sres_login</a></li><li><a href="global.html#Sres_promise">Sres_promise</a></li><li><a href="global.html#Sres_resetPassword">Sres_resetPassword</a></li><li><a href="global.html#Sres_updateArticleInfo">Sres_updateArticleInfo</a></li><li><a href="global.html#Sres_updateLocation">Sres_updateLocation</a></li><li><a href="global.html#Sres_updateUser">Sres_updateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jun 10 2021 23:28:22 GMT+0200 (czas środkowoeuropejski letni)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jun 21 2021 11:34:53 GMT+0200 (czas środkowoeuropejski letni)
 </footer>
 
 <script> prettyPrint(); </script>

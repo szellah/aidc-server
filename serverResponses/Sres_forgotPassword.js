@@ -5,7 +5,9 @@ const { ConsoleWriter } = require('istanbul-lib-report');
  * @function Sres_forgotPassword
  * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
  * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
- * @param {object} params - Zbiór parametrów
+ * @param {object} params - Zbiór parametrów Login
+ * 
+ * @category Sres
  */
 function Sres_forgotPassword(pool, res, params){
 
@@ -15,12 +17,7 @@ function Sres_forgotPassword(pool, res, params){
 
     ServerResponse(contentCreator, res);
 }
-/**
- * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
- * @function Sres_promise
- * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
- * @param {object} params - Rozbity argument params na Login
- */
+
 function Sres_promise(pool, {Login}){
 return new Promise((resolve, reject) => {
 

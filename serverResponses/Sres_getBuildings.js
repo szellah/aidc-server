@@ -4,6 +4,8 @@
  * @function Sres_getBuildings
  * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
  * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
+ * 
+ * @category Sres
  */
 function Sres_getBuildings(pool, res){
 
@@ -13,11 +15,7 @@ function Sres_getBuildings(pool, res){
 
     ServerResponse(contentCreator, res);
 }
-/**
- * Funkcja, która pobiera pulę połączeń i rozbija argument params przekazany przez funkcję Sres
- * @function Sres_promise
- * @param {object} pool - Pula połączeń z baża danych mySQL, zarządza połączeniami z serwerem
- */
+
 function Sres_promise(pool){
 return new Promise((resolve, reject) => {
 

@@ -5,6 +5,8 @@
  * @param {Promise} contentCreator - Promise który tworzy część message w ramce JSONowej
  * @param {function} res - funcja callback odsyłająca ramkę poprzez HTTP
  * @returns {Promise} zwraca nowego Promise, który można asynchronicznie łączyć łąńcuchowo
+ * 
+ * @category handlers
  */
 function ServerResponse(contentCreator, res) {
 	let content = { error: null, message: null };

@@ -12,6 +12,8 @@
  * @param {string} email Email nowego użytkownika, potrzebny do wysłania mu wiadomości mailowych w tym wnowego hasła
  * @param {number} rank Ranga nowego użytkownika, administratorska bądź zwykła
  * @param {number} state Stan nowego użytkownika, aktywn bądź nieaktywny
+ * 
+ * @category Sres
  *  
  * @category Sres
  */

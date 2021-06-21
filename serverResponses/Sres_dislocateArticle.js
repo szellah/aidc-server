@@ -10,6 +10,8 @@
  * @param {function} res Funkcja odsyłająca pakiety danych do klienta
  * @param {number} ArticleId Id odtwowarowanego towaru, następnie zostaje dodany do historii
  * @param {number} AccountId Id użytkownika oddtowarujacego towar, następnie zostaje dodany do historii
+ * 
+ * @category Sres
  */
 function Sres_dislocateArticle(pool, res, params) {
     //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych

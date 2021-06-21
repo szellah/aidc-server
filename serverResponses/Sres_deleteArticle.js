@@ -10,6 +10,8 @@
  * @param {function} res Funkcja odsyłająca pakiety danych do klienta
  * @param {number} UserId  Id użytkownika usuwającego towar, następnie zostaje dodany do historii
  * @param {number} ArticleId  Id usuwanego towaru, następnie zostaje dodany do historii
+ * 
+ * @category Sres
  */
 function Sres_deleteArticle(pool, res, params) {
     //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych

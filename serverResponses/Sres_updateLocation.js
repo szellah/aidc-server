@@ -9,6 +9,8 @@
  * @param {number} floor - numer piętra w danym budynku na którym znajduje się lokalizacja
  * @param {number} room - numer pokoju na danym pietrze w danym budynku w którym znajduje się lokalizacja
  * @param {number} locationId -  Id lokalizacji która zostanie zmieniona
+ * 
+ * @category Sres
  */
 function Sres_updateLocation(pool, res, params) {
 	const { ServerResponse } = require('./ServerResponse');
