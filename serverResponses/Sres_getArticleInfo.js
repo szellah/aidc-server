@@ -26,6 +26,9 @@ pool.query(`SELECT * FROM \`articles\` WHERE ArticleId = ${articleId}`, (error, 
     {
         reject(error.message);
     }
+    else if(!results[0]){
+        reject(new Error("nie ma takiego artykułu"));
+    }
     else
     {
         resolve(results[0]);
