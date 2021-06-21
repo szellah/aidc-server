@@ -8,6 +8,19 @@ api.use(express.json());
 api.use(express.urlencoded({ extended: false }));
 
 
+api.post('/login', (req, res) => {
+	Sres_lib.login(globalPool, res, req.body);
+});
+
+api.post('/resetPassword', (req, res) => {
+	Sres_lib.resetPassword(globalPool, res, req.body);
+});
+
+api.post('/forgotPassword', (req, res) => {
+	Sres_lib.forgotPassword(globalPool, res, req.body);
+});
+
+
 api.post('/test', (req, res) => {
 	Sres_lib.test(globalPool, res, req.body);
 });
@@ -19,9 +32,13 @@ api.post('/getAccountInfo', (req, res) => {
 });
 
 api.post('/getAccountReport', (req, res) => {
-	Sres_lib.getAccountReport(globalPool, res, req.body);
+	Sres_lib.getAccountReport(globalPool, res);
 });
 
+
+api.post('/getArticleReport', (req, res) => {
+	Sres_lib.getArticleReport(globalPool, res, req.body);
+});
 
 
 api.post('/getLocationInfo', (req, res) => {
@@ -100,13 +117,27 @@ api.post("/dislocateArticle", (req, res) => {
 });
 
 
+
+
 api.post("/getArticleCategories", (req, res) => {
     Sres_lib.getArticleCategories(globalPool, res);
 });
+
+api.post("/getBuildings", (req, res) => {
+    Sres_lib.getBuildings(globalPool, res);
+});
   
+api.post("/getFloors", (req, res) => {
+    Sres_lib.getFloors(globalPool, res, req.body);
+});
+  
+api.post("/getRooms", (req, res) => {
+    Sres_lib.getRooms(globalPool, res, req.body);
+});
+  
+
 
 api.listen(port, () => {
 
     console.log("AIDC-SERVER WULS IO gr.4");
 });
-
