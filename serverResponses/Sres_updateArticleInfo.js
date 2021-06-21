@@ -40,7 +40,7 @@ function Sres_promise(
             .slice(0, 19)
             .replace("T", " ");
         //wysłanie zapytania sql do bazy sql
-        if ((!ArticleId) || (!Name || isEmpty(Name)) || (!Category || isEmpty(Category)) || (!LocationId) || (!Description || isEmpty(Description))) {
+        if ((!ArticleId) || (!Name || isEmpty(Name)) || (!Category || isEmpty(Category)) || (!LocationId) ) {
             let err = {message: "Podano niepoprawne wartosci podczas edycji"};
             return reject(err);
         }
