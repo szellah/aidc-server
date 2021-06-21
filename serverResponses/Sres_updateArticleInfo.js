@@ -3,11 +3,17 @@
 //res function - funkcja odsyłająca pakiety danych do klienta
 //params object - zbiór parametrów w postaci obiektu
 /**
+ * Edycja towaru<br>
  * Pobiera specjalnie stworzony Sres_Promise i odsyła jego wynik.
  * @function Sres_updateArticleInfo
  * @param {object} pool  Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
  * @param {function} res Funkcja odsyłająca pakiety danych do klienta
- * @param {object} params  Zbiór parametrów w postaci obiektu
+ * @param {number} UserId  Id użytkownika edytującego towar, następnie zostaje dodany do historii
+ * @param {number} ArticleId Id edytowanego towaru, następnie zostaje dodany do historii
+ * @param {string} Name  Nazwa edytowanego towaru
+ * @param {string} category  Kategoria edytowanego towaru
+ * @param {number} location  Id lokalizacji edytowanego towaru
+ * @param {string} description  Opis edytowanego towaru
  */
 function Sres_updateArticleInfo(pool, res, params) {
     //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych
@@ -19,12 +25,6 @@ function Sres_updateArticleInfo(pool, res, params) {
 }
 
 
-/**
- Pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
- * @function Sres_promise
- * @param {object} pool  Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
- * 
- */
 function Sres_promise(
     pool,
     { UserId, article: { ArticleId, Name, category, location, description } }
