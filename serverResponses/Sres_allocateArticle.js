@@ -27,7 +27,19 @@ function Sres_promise(pool, { ArticleId, LocationId }) {
             let err = {message: "Podano niewłaściwe dane"};
             return reject(err);
         }
-        pool.query(
+        pool.query(`SELECT ArticleId FROM articles WHERE ArticleId = ${ArticleId}`, (error, results, fields) => {
+            if(results.length==0)
+            {
+                reject(new Error("błędznie podane dane"));
+            }else
+            {
+                pool.query(`SELECT LocationId FROM locations WHERE LocationId = ${LocationId}`, (error, results, fields) => {
+                    if(results.length==0)
+                    {
+                     reject(new Error("błędznie podane dane"));
+                    }else
+                    {
+                       pool.query(
             `SELECT Name FROM articles WHERE ArticleId = ${ArticleId}`,
             (error, results) => {
                 if (error) reject(error);
@@ -65,7 +77,13 @@ function Sres_promise(pool, { ArticleId, LocationId }) {
                     );
                 }
             }
-        );
+        ); 
+                    }
+                });
+            }
+           
+        });
+        
     });
 }
 

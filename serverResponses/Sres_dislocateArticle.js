@@ -28,6 +28,15 @@ function Sres_promise(pool, { ArticleId, AccountId }) {
             return reject(err);
         }
         pool.query(
+            `SELECT ArticleId FROM articles WHERE ArticleId = ${ArticleId}`,
+            (error, results) =>{
+                if(results.length==0)
+                {
+                    reject(new Error("błędnie podane dane"));
+                }
+
+                else{
+                    pool.query(
             `SELECT Name FROM articles WHERE ArticleId = ${ArticleId}`,
             (error, results) => {
                 if (error) 
@@ -72,7 +81,12 @@ function Sres_promise(pool, { ArticleId, AccountId }) {
                 }
             }
         );
+    }
+            });
+        
     });
+
+
 }
 
 module.exports = {

@@ -21,7 +21,7 @@ pool.query(`SELECT AccountId, Name, Surname, Login, Email, Rank, State FROM acco
     {
         reject(error);
     }
-    else
+    else if(results.length==1)
     {
         const { setupPassword } = require("./Sres_resetPassword");
         setupPassword(pool, { UserId: results[0].AccountId})
@@ -31,6 +31,10 @@ pool.query(`SELECT AccountId, Name, Surname, Login, Email, Rank, State FROM acco
                     .catch((error) => {
                         reject(error);
                     });
+    }
+    else
+    {
+        reject(new Error("nie ma takiego użytkownika"));
     }
 });
 
