@@ -35,7 +35,6 @@ function Sres_promise(pool) {
 							id: row.AccountId.toString()
 						};
 					});
-					console.log(table);
 					resolve(table);
 				}
 			}

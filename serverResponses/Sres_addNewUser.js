@@ -54,7 +54,6 @@ function Sres_promise(
 					const {setupPassword} = require("./Sres_resetPassword");
 					setupPassword(pool, { UserId: accountId})
 					.then((message) => {
-						console.log(message);
 						pool.query(
 						`INSERT INTO \`locations\` (\`LocationId\`, \`Building\`, \`Floor\`, \`Room\`) VALUES ( NULL, -1, 1, ${accountId}), ( NULL, -1, 2, ${accountId})`,
 						(error, results) => {

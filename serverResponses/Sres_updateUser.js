@@ -34,7 +34,6 @@ function Sres_promise(
 			.replace('T', ' ');
 		//wysłanie zapytania sql do bazy sql
 
-		console.log(Surname);
 
 		if (
 			Name !== '' &&

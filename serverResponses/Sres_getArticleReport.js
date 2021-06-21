@@ -92,7 +92,6 @@ const FloorReport = (pool,building, floor, resolve , reject) => {
  */
 const RoomReport = (pool,building, floor, room, resolve , reject) => {
     const { query } = require('mysql');
-    console.log("RoomReport");
     pool.query(
         `SELECT ArticleId, Category, Name, Building, Floor, Room FROM \`articles\` LEFT JOIN \`locations\` ON \`articles\`.\`LocationId\` = \`locations\`.\`LocationId\` WHERE Building = ${building} AND Floor=${floor} AND Room = ${room}`,
         (error, results, fields) => {

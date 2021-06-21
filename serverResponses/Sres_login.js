@@ -33,13 +33,10 @@ function Sres_promise(pool, {username, password}) {
             else {
                 // Tutaj byc moze wpis do historii, ale nie znalazlem jak ma wygladac
                 // pool.query(``)
-                console.log(results);
-                console.log(results.length);
                 // exp to czas wygaszenia tokena, ale i tak zrobilem to inaczej w Login.js, nie ma on znaczenia ale najlepiej zostawic jakas duza wartosc
                 // config.secret to sekret dla tokena, jest w pliku config.js
                 let token = jwt.sign({username: username, exp: Math.floor(Date.now() / 1000) + (600 * 600)}, config.secret);
                 results[0].token = token;
-                console.log(results);
                 resolve(results);
             }
         });
