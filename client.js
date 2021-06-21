@@ -3,9 +3,9 @@ const SHA256 = require('crypto-js/sha256');
 const {passwordGenerator} = require('./handlers/passwordGenerator');
 
 const queryParams = {
-    UserId: 13
+    UserToDelete: 1,
+    UserId: 1,
 };
-
 
 // axios.post('http://192.168.1.80:8080/test', queryParams)
 // .then(res => {
@@ -23,19 +23,17 @@ const queryParams = {
 //     console.error(error)
 // })
 
+// axios.post('http://192.168.0.4:8080/login', queryParams)
+// .then(res => {
+//     console.log(res.data)
+// })
+// .catch(error => {console.log(error)})
 
-axios.post('http://192.168.1.80:8080/resetPassword', queryParams)
-.then(res => {
-    console.log(res.data)
-})
-.catch(error => {console.log(error)})
-
-
-// const pass = passwordGenerator();
-// console.log(pass);
-// console.log(SHA256(pass).toString());
-
-
-
-
-
+axios
+    .post("http://localhost:8080/deleteUser", queryParams)
+    .then((res) => {
+        console.log(res.data);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
