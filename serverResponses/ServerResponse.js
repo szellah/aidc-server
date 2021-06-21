@@ -1,3 +1,11 @@
+/**
+ * Funkcja odsyłająca HTTP<br>
+ * Funkcja tworzy obiekt w skłądni JSON jako ramkę która informuje o błedzie i przesyła dane
+ * pod taką postacią `{error: bool, message: object}`. 
+ * @param {Promise} contentCreator - Promise który tworzy część message w ramce JSONowej
+ * @param {function} res - funcja callback odsyłająca ramkę poprzez HTTP
+ * @returns {Promise} zwraca nowego Promise, który można asynchronicznie łączyć łąńcuchowo
+ */
 function ServerResponse(contentCreator, res) {
 	let content = { error: null, message: null };
 

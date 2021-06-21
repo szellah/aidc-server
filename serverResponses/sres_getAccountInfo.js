@@ -1,5 +1,12 @@
-
-function Sres_getAccountInfo(pool, res, params){
+/**
+ * Pobierz Informacje o użytkowniku<br>
+ * Funkcja pobiera Sres_promise i odsyła jego wynik
+ * w tym przypadku apropo informacji o koncie 
+ * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
+ * @param {function} res Funkcja odsyłająca pakiety danych do klienta
+ * @param {number} accountId Id użytkownika którego informacje mają zostać odesłane
+ */
+ function Sres_getAccountInfo(pool, res, params){
 
     const { ServerResponse } = require('./ServerResponse');
 

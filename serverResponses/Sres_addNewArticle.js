@@ -1,9 +1,20 @@
-//funckja Sres która pobiera specjalnie stworzony Sres_Promise i odsyła jego wynik.
-//pool object - póla połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
-//res function - funkcja odsyłająca pakiety danych do klienta
-//params object - zbiór parametrów w postaci obiektu
+
+/**
+ * Dodawanie nowego towaru<br>
+ * Pobiera specjalnie stworzony Sres_Promise i odsyła jego wynik
+ * @function Sres_addNewArticle 
+ * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
+ * @param {function} res Funkcja odsyłająca pakiety danych do klienta.
+ * @param {object} params Zbiór parametrów w postaci obiektu.
+ * @param {number} UserId  Id użytkownika dodającego towar, następnie zostaje dodany do historii
+ * @param {string} Name  Nazwa dodawanego towaru
+ * @param {string} category  Kategoria dodawanego towaru
+ * @param {number} location  Id lokalizacji dodawanego towaru
+ * @param {string} description  Opis dodawanego towaru
+ */
+
 function Sres_addNewArticle(pool, res, params) {
-    //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych
+    
     const { ServerResponse } = require("./ServerResponse");
     //stworzenie Promise, który wykona się po wrzuceniu go do ServerResponse
     const contentCreator = Sres_promise(pool, params);
@@ -11,7 +22,7 @@ function Sres_addNewArticle(pool, res, params) {
     ServerResponse(contentCreator, res);
 }
 
-//pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
+
 function Sres_promise(
     pool,
     { UserId, article: { Name, Category, LocationId, Description } }

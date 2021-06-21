@@ -1,3 +1,15 @@
+/**
+ * Edycja Lokalizacji<br>
+ * Funkcja odpowiedzialna za edycję nowej lokacji<br>
+ * Po jej użyciu do aplikacji zostanie odesłany wynik tej funkcji do ServerResponse<br>
+ * @function Sres_updateLocation
+ * @param {object} pool - Pula połączeń z bazą danych mySQL, zarządza połączeniami z serwerem
+ * @param {function} res - Funkcja odsyłająca pakiety danych do klienta
+ * @param {number} building - numer budynku w którym znajduje się lokalizacja
+ * @param {number} floor - numer piętra w danym budynku na którym znajduje się lokalizacja
+ * @param {number} room - numer pokoju na danym pietrze w danym budynku w którym znajduje się lokalizacja
+ * @param {number} locationId -  Id lokalizacji która zostanie zmieniona
+ */
 function Sres_updateLocation(pool, res, params) {
 	const { ServerResponse } = require('./ServerResponse');
 
@@ -5,6 +17,7 @@ function Sres_updateLocation(pool, res, params) {
 
 	ServerResponse(contentCreator, res);
 }
+
 
 function Sres_promise(
 	pool,

@@ -1,4 +1,20 @@
-//raczej ok
+/**
+ * Edycja użytkownika<br>
+ * odsyła poprzez HTTP informacje o tym czy udało się zmienić dane 
+ * użytkownika
+ * @function 
+ * @param {object} pool Połączenie do bazy danych
+ * @param {function} res Funkcja zwracająca informacje poprzez HTTP POST
+ * @param {number} UserId Id użytkownika edytującego innego użytkownika, zapisane zostanie jako wpis w historii
+ * @param {string} name Imię zmienianego użytkownika
+ * @param {string} surname Nazwisko zmienianego użytkownika
+ * @param {string} login Login zmienianego użytkownika
+ * @param {string} email Email zmienianego użytkownika, potrzebny do wysłania mu wiadomości mailowych w tym wzmienianego hasła
+ * @param {number} rank Ranga zmienianego użytkownika, administratorska bądź zwykła
+ * @param {number} state Stan zmienianego użytkownika, aktywn bądź nieaktywny
+ *  
+ * @category Sres
+ */
 function Sres_updateUser(pool, res, params) {
 	const { ServerResponse } = require('./ServerResponse');
 	const contentCreator = Sres_promise(pool, params);

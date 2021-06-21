@@ -2,6 +2,15 @@
 //pool object - póla połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
 //res function - funkcja odsyłająca pakiety danych do klienta
 //params object - zbiór parametrów w postaci obiektu
+/** 
+ * Dotowarowanie artykułu<br>
+ * Pobiera specjalnie stworzony Sres_Promise i odsyła jego wynik
+ * @function Sres_allocateArticle 
+ * @param {object} pool pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
+ * @param {function} res Funkcja odsyłająca pakiety danych do klienta
+ * @param {number} ArticleId Id dotowarowanego towaru, następnie zostaje dodany do historii
+ * @param {number} LocationId  Id lokalizacji dotowarowania
+ */
 function Sres_allocateArticle(pool, res, params) {
     //pobranie funkcji ServerResponse która pozawala na szybkie odesłanie danych
     const { ServerResponse } = require("./ServerResponse");
