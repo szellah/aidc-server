@@ -1,9 +1,10 @@
 /**
+ * Pobierz Informacje o użytkowniku<br>
  * Funkcja pobiera Sres_promise i odsyła jego wynik
  * w tym przypadku apropo informacji o koncie 
- * @param {var} pool    - połączenie z bazą danych  
- * @param {var} res     - funkcja odsyłająca pakiety danych do klienta
- * @param {var} params  - parametry Konta
+ * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
+ * @param {function} res Funkcja odsyłająca pakiety danych do klienta
+ * @param {number} accountId Id użytkownika którego informacje mają zostać odesłane
  */
  function Sres_getAccountInfo(pool, res, params){
 
@@ -14,13 +15,6 @@
     ServerResponse(contentCreator, res);
 }
 
-/**
- * Funkcja wysyła zapytanie do servera o informacje apropo Konta o podanym ID
- * pobiera pulę połączeń oraz rozbija(dekonstrukcja) parametry przekazane przez funkcję Sres
- * @param {var} pool       -połączenie z bazą danych
- * @param {var} accountId  -ID Konta
- * @returns zwraca informacje o danym Koncie albo error
- */
 function Sres_promise(pool, {accountId}){
 return new Promise((resolve, reject) => {
 

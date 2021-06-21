@@ -1,9 +1,10 @@
 /**
+ * Pobierz Informacje o lokalizacji<br>
  * Funkcja pobiera Sres_promise i odsyła jego wynik
  * w tym przypadku apropo informacji o lokalizacji 
- * @param {var} pool    - połączenie z bazą danych  
- * @param {var} res     - funkcja odsyłająca pakiety danych do klienta
- * @param {var} params  - parametry Lokalizacji
+ * @param {object} pool Pula połączeń z bazą mysql, z której wydzielane jest połączenie względem zapotrzebowania i możliwości serwera
+ * @param {function} res Funkcja odsyłająca pakiety danych do klienta
+ * @param {number} locationId Id Lokalizacji której informacje mają zostać odesłane
  */
  function Sres_getLocationInfo(pool, res, params){
 
@@ -13,13 +14,7 @@
 
     ServerResponse(contentCreator, res);
 }
-/**
- * Funkcja wysyła zapytanie do servera o informacje apropo Lokalizacji o podanym ID
- * pobiera pulę połączeń oraz rozbija(dekonstrukcja) parametry przekazane przez funkcję Sres
- * @param {var} pool        -połączenie z bazą danych
- * @param {var} locationId  -ID lokalizacji
- * @returns zwraca informacje o danej lokalizacji albo error
- */
+
 function Sres_promise(pool, {locationId}){
 return new Promise((resolve, reject) => {
 
