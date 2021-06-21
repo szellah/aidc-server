@@ -1,4 +1,6 @@
+
 var SHA256 = require("crypto-js/sha256");
+
 
 
 //funckja Sres która pobiera specjalnie stworzony Sres_Promise i odsyła jego wynik.
@@ -15,25 +17,32 @@ function Sres_test(pool, res, params) {
 }
 
 //pobranie póli połączeń oraz rozbicie (dekonstrukcja) parametrów przekazanych przez funkcję Sres
-function Sres_promise(pool, { userId, password }) {
+
+
+function Sres_promise(pool, { tr }) {
 
 	return new Promise((resolve, reject) => {
 		const { query } = require('mysql');
 
-        pool.query(
-			`UPDATE accounts SET Password="${SHA256(password)}" WHERE AccountId = ${userId}`,
+		pool.query(
+			`INSERT INTO \`history\` (Action, Time, FirstId, SecondId) VALUES ( 5, NOW(), 1, 1), ( 5, NOW(), 1, 1)`,
 			(error, results, fields) => {
 				if (error) {
 					reject(error.message);
 				} else {
-                    resolve(`Zmieniono haslo`);
+					resolve(`Dodano lokalizację ${results.insertId}`);
 				}
 			}
 		);
+
+
+
 
 	});
 }
 
 module.exports = {
 	Sres_test,
+
 };
+

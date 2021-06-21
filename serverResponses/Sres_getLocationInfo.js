@@ -1,5 +1,5 @@
 
-function Sres_getAccountInfo(pool, res, params){
+function Sres_getLocationInfo(pool, res, params){
 
     const { ServerResponse } = require('./ServerResponse');
 
@@ -8,13 +8,12 @@ function Sres_getAccountInfo(pool, res, params){
     ServerResponse(contentCreator, res);
 }
 
-function Sres_promise(pool, {accountId}){
+function Sres_promise(pool, {locationId}){
 return new Promise((resolve, reject) => {
 
+const { query } = require('mysql');
 
-
-
-pool.query(`SELECT AccountId, Name, Surname, Login, Email, Rank, State FROM accounts WHERE AccountId = ${accountId}`, (error, results, fields) => {
+pool.query(`SELECT * FROM \`locations\` WHERE LocationId = ${locationId}`, (error, results, fields) => {
     
     if(error)
     {
@@ -29,10 +28,8 @@ pool.query(`SELECT AccountId, Name, Surname, Login, Email, Rank, State FROM acco
 });
 
 }
-	
 
-module.exports = {
-	Sres_getAccountInfo,
-
-};
+module.exports={
+    Sres_getLocationInfo,
+}
 
